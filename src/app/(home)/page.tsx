@@ -5,10 +5,11 @@ import { TopChannels } from "@/components/Tables/top-customers";
 import { TopChannelsSkeleton } from "@/components/Tables/top-customers/skeleton";
 import { createTimeFrameExtractor } from "@/utils/timeframe-extractor";
 import { Suspense } from "react";
-import { ChatsCard } from "./_components/chats-card";
+// import { ChatsCard } from "./_components/chats-card";
 import { OverviewCardsGroup } from "./_components/overview-cards";
 import { OverviewCardsSkeleton } from "./_components/overview-cards/skeleton";
 import { RegionLabels } from "./_components/region-labels";
+// import { InvoiceTable } from "@/components/Tables/invoice-table";
 
 type PropsType = {
   searchParams: Promise<{
@@ -53,9 +54,9 @@ export default async function Home({ searchParams }: PropsType) {
           </Suspense>
         </div>
 
-        <Suspense fallback={null}>
-          <ChatsCard />
-        </Suspense>
+        {/* <Suspense fallback={null}>
+          <InvoiceTable />
+        </Suspense> */}
       </div>
     </>
   );

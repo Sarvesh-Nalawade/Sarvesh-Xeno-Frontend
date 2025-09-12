@@ -78,44 +78,48 @@ export async function getTopChannels() {
 
   return [
     {
-      name: "Google",
-      visitors: 3456,
-      revenues: 4220,
-      sales: 3456,
+      name: "Sarvesh",
+      visitors: "8805060804",
+      revenues: "sarvesh.me@gmail.com",
+      sales: "Pune",
       conversion: 2.59,
-      logo: logos.google,
+      tag: "vip"
     },
     {
-      name: "X.com",
-      visitors: 3456,
-      revenues: 4220,
-      sales: 3456,
+      name: "Ujjawal",
+      visitors: "8805060804",
+      revenues: "sarvesh.me@gmail.com",
+      sales: "Pune",
       conversion: 2.59,
-      logo: logos.x,
+      tag: "vip"
+      
     },
     {
-      name: "Github",
-      visitors: 3456,
-      revenues: 4220,
-      sales: 3456,
+      name: "Bhushan",
+      visitors: "8805060804",
+      revenues: "sarvesh.me@gmail.com",
+      sales: "Pune",
       conversion: 2.59,
-      logo: logos.github,
+      tag: "vip"
+      
     },
     {
-      name: "Vimeo",
-      visitors: 3456,
-      revenues: 4220,
-      sales: 3456,
+      name: "Vedant",
+      visitors: "8805060804",
+      revenues: "sarvesh.me@gmail.com",
+      sales: "Pune",
       conversion: 2.59,
-      logo: logos.vimeo,
+      tag: "vip"
+      
     },
     {
-      name: "Facebook",
-      visitors: 3456,
-      revenues: 4220,
-      sales: 3456,
+      name: "Aryan",
+      visitors: "8805060804",
+      revenues: "sarvesh.me@gmail.com",
+      sales: "Pune",
       conversion: 2.59,
-      logo: logos.facebook,
+      tag: "vip"
+      
     },
   ];
 }
