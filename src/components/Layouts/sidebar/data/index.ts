@@ -9,9 +9,18 @@ export const NAV_DATA = [
         icon: Icons.HomeIcon,
         items: [
           {
-            title: "eCommerce",
+            title: "Orders",
             url: "/",
           },
+          {
+            title: "Customers",
+            url: "/customers",
+          },
+          {
+            title: "Products",
+            url: "/products",
+          },
+          
         ],
       },
       // {
@@ -23,6 +32,12 @@ export const NAV_DATA = [
       {
         title: "Profile",
         url: "/profile",
+        icon: Icons.User,
+        items: [],
+      },
+      {
+        title: "Shop Details",
+        url: "/shop",
         icon: Icons.User,
         items: [],
       },
@@ -40,17 +55,17 @@ export const NAV_DATA = [
       //     },
       //   ],
       // },
-      {
-        title: "Tables",
-        url: "/tables",
-        icon: Icons.Table,
-        items: [
-          {
-            title: "Tables",
-            url: "/tables",
-          },
-        ],
-      },
+      // {
+      //   title: "Tables",
+      //   url: "/tables",
+      //   icon: Icons.Table,
+      //   items: [
+      //     {
+      //       title: "Tables",
+      //       url: "/tables",
+      //     },
+      //   ],
+      // },
       // {
       //   title: "Pages",
       //   icon: Icons.Alphabet,
@@ -66,30 +81,30 @@ export const NAV_DATA = [
   {
     label: "OTHERS",
     items: [
-      {
-        title: "Charts",
-        icon: Icons.PieChart,
-        items: [
-          {
-            title: "Basic Chart",
-            url: "/charts/basic-chart",
-          },
-        ],
-      },
-      {
-        title: "UI Elements",
-        icon: Icons.FourCircle,
-        items: [
-          {
-            title: "Alerts",
-            url: "/ui-elements/alerts",
-          },
-          // {
-          //   title: "Buttons",
-          //   url: "/ui-elements/buttons",
-          // },
-        ],
-      },
+      // {
+      //   title: "Charts",
+      //   icon: Icons.PieChart,
+      //   items: [
+      //     {
+      //       title: "Basic Chart",
+      //       url: "/charts/basic-chart",
+      //     },
+      //   ],
+      // },
+      // {
+      //   title: "UI Elements",
+      //   icon: Icons.FourCircle,
+      //   items: [
+      //     {
+      //       title: "Alerts",
+      //       url: "/ui-elements/alerts",
+      //     },
+      //     // {
+      //     //   title: "Buttons",
+      //     //   url: "/ui-elements/buttons",
+      //     // },
+      //   ],
+      // },
       {
         title: "Authentication",
         icon: Icons.Authentication,
