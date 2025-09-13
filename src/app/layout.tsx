@@ -4,7 +4,7 @@ import "@/css/style.css";
 import { Sidebar } from "@/components/Layouts/sidebar";
 
 import "flatpickr/dist/flatpickr.min.css";
-import "jsvectormap/dist/jsvectormap.css";
+import "jvectormap-next/jquery-jvectormap.css";
 
 import { Header } from "@/components/Layouts/header";
 import type { Metadata } from "next";
