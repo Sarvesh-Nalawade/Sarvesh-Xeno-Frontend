@@ -4,6 +4,8 @@ import { TopChannels } from "@/components/Tables/top-customers";
 // import { TopChannelsSkeleton } from "@/components/Tables/top-customers/skeleton";
 import { TopProducts } from "@/components/Tables/top-products";
 import { TopProductsSkeleton } from "@/components/Tables/top-products/skeleton";
+import { UsedDevices } from "@/components/Charts/used-devices";
+import { UsedDevicesSkeleton } from "@/components/Charts/used-devices/skeleton";
 
 import { Metadata } from "next";
 import { Suspense } from "react";
@@ -24,6 +26,10 @@ const TablesPage = () => {
         
         <Suspense fallback={<TopProductsSkeleton />}>
           <TopProducts />
+        </Suspense>
+
+        <Suspense fallback={<UsedDevicesSkeleton />}>
+          <UsedDevices />
         </Suspense>
 
         <InvoiceTable />
