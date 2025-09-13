@@ -17,6 +17,9 @@ export async function InvoiceTable() {
 
   return (
     <div className="rounded-[10px] border border-stroke bg-white p-4 shadow-1 dark:border-dark-3 dark:bg-gray-dark dark:shadow-card sm:p-7.5">
+      <h2 className="mb-4 text-body-2xlg font-bold text-dark dark:text-white">
+        All Order Detail Table
+      </h2>
       <Table>
         <TableHeader>
           <TableRow className="border-none bg-[#F7F9FC] dark:bg-dark-2 [&>th]:py-4 [&>th]:text-base [&>th]:text-dark [&>th]:dark:text-white">

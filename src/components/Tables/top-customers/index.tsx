@@ -55,15 +55,15 @@ export async function TopChannels({ className }: { className?: string }) {
                 <div className="">{channel.name}</div>
               </TableCell>
 
-              <TableCell>{(channel.visitors)}</TableCell>
+              <TableCell>{channel.phone}</TableCell>
 
               <TableCell className="!text-right text-green-light-1">
-                {(channel.revenues)}
+                {channel.email}
               </TableCell>
 
-              <TableCell>{channel.sales}</TableCell>
+              <TableCell>{channel.city}</TableCell>
 
-              <TableCell>{channel.conversion}%</TableCell>
+              <TableCell>{channel.revenue}</TableCell>
               <TableCell>{channel.tag}</TableCell>
             </TableRow>
           ))}

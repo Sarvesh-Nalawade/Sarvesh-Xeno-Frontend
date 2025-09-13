@@ -1,18 +1,18 @@
 import { PeriodPicker } from "@/components/period-picker";
 import { cn } from "@/lib/utils";
-import { getDevicesUsedData } from "@/services/charts.services";
-import { DonutChart } from "./chart";
+import { getTopCustomersByOrderData } from "@/services/charts.services";
+import { DonutChart } from "../used-devices/chart";
 
 type PropsType = {
   timeFrame?: string;
   className?: string;
 };
 
-export async function UsedDevices({
+export async function TopCustomersByOrder({
   timeFrame = "monthly",
   className,
 }: PropsType) {
-  const data = await getDevicesUsedData(timeFrame);
+  const data = await getTopCustomersByOrderData(timeFrame);
 
   return (
     <div
@@ -23,10 +23,10 @@ export async function UsedDevices({
     >
       <div className="flex flex-wrap items-center justify-between gap-4">
         <h2 className="text-body-2xlg font-bold text-dark dark:text-white">
-          Top 5 Orders by Revenue
+          Top 5 Customers by Order
         </h2>
 
-        <PeriodPicker defaultValue={timeFrame} sectionKey="used_devices" />
+        <PeriodPicker defaultValue={timeFrame} sectionKey="top_customers_by_order" />
       </div>
 
       <div className="grid place-items-center">

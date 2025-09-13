@@ -2,7 +2,7 @@ import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
 
 import { TopChannels } from "@/components/Tables/top-customers";
 import { TopChannelsSkeleton } from "@/components/Tables/top-customers/skeleton";
-import { UsedDevices } from "@/components/Charts/used-devices";
+import { TopCustomersByOrder } from "@/components/Charts/TopCustomersByOrder";
 import { UsedDevicesSkeleton } from "@/components/Charts/used-devices/skeleton";
 // import { TopProducts } from "@/components/Tables/top-products";
 // import { TopProductsSkeleton } from "@/components/Tables/top-products/skeleton";
@@ -23,7 +23,7 @@ const TablesPage = () => {
         
         
         <Suspense fallback={<UsedDevicesSkeleton />}>
-          <UsedDevices />
+          <TopCustomersByOrder />
         </Suspense>
 
         <Suspense fallback={<TopChannelsSkeleton />}>

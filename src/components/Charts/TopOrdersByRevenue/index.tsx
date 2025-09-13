@@ -1,18 +1,18 @@
 import { PeriodPicker } from "@/components/period-picker";
 import { cn } from "@/lib/utils";
-import { getDevicesUsedData } from "@/services/charts.services";
-import { DonutChart } from "./chart";
+import { getTopOrdersByRevenueData } from "@/services/charts.services";
+import { DonutChart } from "../used-devices/chart";
 
 type PropsType = {
   timeFrame?: string;
   className?: string;
 };
 
-export async function UsedDevices({
+export async function TopOrdersByRevenue({
   timeFrame = "monthly",
   className,
 }: PropsType) {
-  const data = await getDevicesUsedData(timeFrame);
+  const data = await getTopOrdersByRevenueData(timeFrame);
 
   return (
     <div
@@ -26,7 +26,7 @@ export async function UsedDevices({
           Top 5 Orders by Revenue
         </h2>
 
-        <PeriodPicker defaultValue={timeFrame} sectionKey="used_devices" />
+        <PeriodPicker defaultValue={timeFrame} sectionKey="top_orders_by_revenue" />
       </div>
 
       <div className="grid place-items-center">

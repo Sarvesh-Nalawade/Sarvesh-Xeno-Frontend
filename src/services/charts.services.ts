@@ -1,3 +1,6 @@
+import { promises as fs } from "fs";
+import path from "path";
+
 export async function getDevicesUsedData(
   timeFrame?: "monthly" | "yearly" | (string & {}),
 ) {
@@ -141,6 +144,148 @@ export async function getWeeksProfitData(timeFrame?: string) {
       { x: "Fri", y: 15 },
     ],
   };
+}
+
+export async function getTopProductsByOrderData(
+  timeFrame?: "monthly" | "yearly" | (string & {}),
+) {
+  // Fake delay
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+
+  const lineItemsPath = path.join(process.cwd(), "data", "line_items.json");
+  const productsPath = path.join(process.cwd(), "data", "products.json");
+
+  const [lineItemsData, productsData] = await Promise.all([
+    fs.readFile(lineItemsPath, "utf-8"),
+    fs.readFile(productsPath, "utf-8"),
+  ]);
+
+  const lineItems: { product_id: string; quantity: number }[] =
+    JSON.parse(lineItemsData);
+  const products: { id: string; title: string }[] = JSON.parse(productsData);
+
+  const productQuantities = lineItems.reduce(
+    (acc, item) => {
+      acc[item.product_id] = (acc[item.product_id] || 0) + item.quantity;
+      return acc;
+    },
+    {} as Record<string, number>,
+  );
+
+  const sortedProducts = Object.entries(productQuantities)
+    .sort(([, a], [, b]) => b - a)
+    .slice(0, 5);
+
+  const totalQuantity = sortedProducts.reduce(
+    (sum, [, quantity]) => sum + (quantity as number),
+    0,
+  );
+
+  const topProducts = sortedProducts.map(([productId, quantity]) => {
+    const product = products.find((p) => p.id === productId);
+    return {
+      name: product ? product.title : "Unknown Product",
+      amount: quantity as number,
+      percentage: totalQuantity > 0 ? (quantity as number) / totalQuantity : 0,
+    };
+  });
+
+  if (timeFrame === "yearly") {
+    topProducts.forEach((item) => (item.amount *= 12)); // This logic might need adjustment based on real data
+  }
+
+  return topProducts;
+}
+
+export async function getTopCustomersByOrderData(
+  timeFrame?: "monthly" | "yearly" | (string & {}),
+) {
+  // Fake delay
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+
+  const ordersPath = path.join(process.cwd(), "data", "orders.json");
+  const customersPath = path.join(process.cwd(), "data", "customers.json");
+
+  const [ordersData, customersData] = await Promise.all([
+    fs.readFile(ordersPath, "utf-8"),
+    fs.readFile(customersPath, "utf-8"),
+  ]);
+
+  const orders: { customer_id: string }[] = JSON.parse(ordersData);
+  const customers: { id: string; first_name: string; last_name: string }[] =
+    JSON.parse(customersData);
+
+  const customerOrderCounts = orders.reduce(
+    (acc, order) => {
+      if (order.customer_id) {
+        acc[order.customer_id] = (acc[order.customer_id] || 0) + 1;
+      }
+      return acc;
+    },
+    {} as Record<string, number>,
+  );
+
+  const sortedCustomers = Object.entries(customerOrderCounts)
+    .sort(([, a], [, b]) => b - a)
+    .slice(0, 5);
+
+  const totalOrders = sortedCustomers.reduce(
+    (sum, [, count]) => sum + (count as number),
+    0,
+  );
+
+  const topCustomers = sortedCustomers.map(([customerId, count]) => {
+    const customer = customers.find((c) => c.id === customerId);
+    return {
+      name: customer
+        ? `${customer.first_name} ${customer.last_name}`
+        : "Unknown Customer",
+      amount: count as number,
+      percentage: totalOrders > 0 ? (count as number) / totalOrders : 0,
+    };
+  });
+
+  if (timeFrame === "yearly") {
+    topCustomers.forEach((item) => (item.amount *= 12)); // This logic might need adjustment based on real data
+  }
+
+  return topCustomers;
+}
+
+export async function getTopOrdersByRevenueData(
+  timeFrame?: "monthly" | "yearly" | (string & {}),
+) {
+  // Fake delay
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+
+  const ordersPath = path.join(process.cwd(), "data", "orders.json");
+  const ordersData = await fs.readFile(ordersPath, "utf-8");
+  const orders: { order_number: string; total_price: string }[] =
+    JSON.parse(ordersData);
+
+  const sortedOrders = orders
+    .sort((a, b) => parseFloat(b.total_price) - parseFloat(a.total_price))
+    .slice(0, 5);
+
+  const totalRevenue = sortedOrders.reduce(
+    (sum, order) => sum + parseFloat(order.total_price),
+    0,
+  );
+
+  const topOrders = sortedOrders.map((order) => {
+    const revenue = parseFloat(order.total_price);
+    return {
+      name: `Order #${order.order_number}`,
+      amount: revenue,
+      percentage: totalRevenue > 0 ? revenue / totalRevenue : 0,
+    };
+  });
+
+  if (timeFrame === "yearly") {
+    topOrders.forEach((item) => (item.amount *= 12)); // This logic might need adjustment based on real data
+  }
+
+  return topOrders;
 }
 
 export async function getCampaignVisitorsData() {
