@@ -50,13 +50,12 @@ export async function getTopProducts() {
     const sold = lineItems
       .filter((li: any) => li.product_id === product.id)
       .reduce((acc: number, li: any) => acc + li.quantity, 0);
-    const profit = sold * product.price * 0.1; // Assuming 10% profit margin
+    const profit = sold * (productVariants[0]?.price || 0) * 0.1; // Assuming 10% profit margin and using first variant price
 
     return {
-      image: product.image_url || "/images/product/product-01.png",
       name: product.title,
       category: product.product_type,
-      price: product.price,
+      price: productVariants[0]?.price || 0,
       sold,
       profit,
     };
@@ -81,7 +80,7 @@ export async function getInvoiceTableData() {
       name: `Order #${order.order_number}`,
       price: order.total_price,
       date: order.timestamp,
-      status: order.financial_stat,
+      status: order.financial_status,
       quantity: items.reduce((acc: number, item: any) => acc + item.quantity, 0),
       discount: order.total_discount,
     };

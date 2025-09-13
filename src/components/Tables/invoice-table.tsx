@@ -23,23 +23,19 @@ export async function InvoiceTable() {
       <Table>
         <TableHeader>
           <TableRow className="border-none bg-[#F7F9FC] dark:bg-dark-2 [&>th]:py-4 [&>th]:text-base [&>th]:text-dark [&>th]:dark:text-white">
-            <TableHead className="min-w-[155px] xl:pl-7.5">Package</TableHead>
+            <TableHead className="min-w-[155px] xl:pl-7.5">Order ID</TableHead>
             <TableHead>Invoice Date</TableHead>
             <TableHead>Status</TableHead>
             <TableHead>Quantity</TableHead>
-            <TableHead>Discount</TableHead>
-            <TableHead className="text-right xl:pr-7.5">Actions</TableHead>
+            <TableHead>Price</TableHead>
           </TableRow>
         </TableHeader>
 
         <TableBody>
-          {data.map((item, index) => (
+          {data.map((item: { name: string; price: number; date: string; status: string; quantity: number; discount: number }, index: number) => (
             <TableRow key={index} className="border-[#eee] dark:border-dark-3">
               <TableCell className="min-w-[155px] xl:pl-7.5">
                 <h5 className="text-dark dark:text-white">{item.name}</h5>
-                <p className="mt-[3px] text-body-sm font-medium">
-                  ${item.price}
-                </p>
               </TableCell>
 
               <TableCell>
@@ -71,26 +67,7 @@ export async function InvoiceTable() {
               </TableCell>
 
               <TableCell>
-                <p className="text-dark dark:text-white">${item.discount}</p>
-              </TableCell>
-
-              <TableCell className="xl:pr-7.5">
-                <div className="flex items-center justify-end gap-x-3.5">
-                  <button className="hover:text-primary">
-                    <span className="sr-only">View Invoice</span>
-                    <PreviewIcon />
-                  </button>
-
-                  <button className="hover:text-primary">
-                    <span className="sr-only">Delete Invoice</span>
-                    <TrashIcon />
-                  </button>
-
-                  <button className="hover:text-primary">
-                    <span className="sr-only">Download Invoice</span>
-                    <DownloadIcon />
-                  </button>
-                </div>
+                <p className="text-dark dark:text-white">${item.price}</p>
               </TableCell>
             </TableRow>
           ))}
