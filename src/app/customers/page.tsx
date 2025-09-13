@@ -20,19 +20,15 @@ const TablesPage = () => {
       <Breadcrumb pageName="Tables" />
 
       <div className="space-y-10">
-        <Suspense fallback={<TopChannelsSkeleton />}>
-          <TopChannels />
-        </Suspense>
+        
         
         <Suspense fallback={<UsedDevicesSkeleton />}>
           <UsedDevices />
         </Suspense>
 
-        {/* <Suspense fallback={<TopProductsSkeleton />}>
-          <TopProducts />
-        </Suspense> */}
-
-        
+        <Suspense fallback={<TopChannelsSkeleton />}>
+          <TopChannels />
+        </Suspense>
       </div>
     </>
   );

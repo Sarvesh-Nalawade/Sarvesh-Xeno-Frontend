@@ -23,6 +23,8 @@ export async function InvoiceTable() {
             <TableHead className="min-w-[155px] xl:pl-7.5">Package</TableHead>
             <TableHead>Invoice Date</TableHead>
             <TableHead>Status</TableHead>
+            <TableHead>Quantity</TableHead>
+            <TableHead>Discount</TableHead>
             <TableHead className="text-right xl:pr-7.5">Actions</TableHead>
           </TableRow>
         </TableHeader>
@@ -59,6 +61,14 @@ export async function InvoiceTable() {
                 >
                   {item.status}
                 </div>
+              </TableCell>
+
+              <TableCell>
+                <p className="text-dark dark:text-white">{item.quantity}</p>
+              </TableCell>
+
+              <TableCell>
+                <p className="text-dark dark:text-white">${item.discount}</p>
               </TableCell>
 
               <TableCell className="xl:pr-7.5">
