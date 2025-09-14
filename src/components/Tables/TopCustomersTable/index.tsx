@@ -58,7 +58,7 @@ export function TopCustomersTable({ data, className }: { data: Customer[], class
                 {customer.email || "N/A"}
               </TableCell>
 
-              <TableCell>{customer.revenue_generated.toFixed(2)}</TableCell>
+              <TableCell>₹ {customer.revenue_generated.toFixed(2)}</TableCell>
               <TableCell>{customer.tags || "N/A"}</TableCell>
             </TableRow>
           ))}
