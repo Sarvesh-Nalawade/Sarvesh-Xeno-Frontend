@@ -1,8 +1,8 @@
 import { PaymentsOverview } from "@/components/Charts/payments-overview";
 import { TopOrdersByRevenue } from "@/components/Charts/TopOrdersByRevenue";
 import { WeeksProfit } from "@/components/Charts/weeks-profit";
-import { TopChannels } from "@/components/Tables/top-customers";
-import { TopChannelsSkeleton } from "@/components/Tables/top-customers/skeleton";
+// import { TopChannels } from "@/components/Tables/top-customers";
+// import { TopChannelsSkeleton } from "@/components/Tables/top-customers/skeleton";
 import { createTimeFrameExtractor } from "@/utils/timeframe-extractor";
 import { Suspense } from "react";
 import { InvoiceTable } from "@/components/Tables/invoice-table";
@@ -49,11 +49,11 @@ export default async function Home({ searchParams }: PropsType) {
 
         
 
-        <div className="col-span-12">
+        {/* <div className="col-span-12">
           <Suspense fallback={<TopChannelsSkeleton />}>
             <TopChannels />
           </Suspense>
-        </div>
+        </div> */}
 
         <div className="col-span-12">
           <Suspense fallback={null}>

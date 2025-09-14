@@ -1,18 +1,29 @@
-import { PeriodPicker } from "@/components/period-picker";
 import { cn } from "@/lib/utils";
-import { getTopProductsByOrderData } from "@/services/charts.services";
 import { DonutChart } from "../used-devices/chart";
 
+// Define the Product type based on the backend model
+interface Product {
+  title: string;
+  price: number;
+  inv_item_qty: number;
+  weight: number | null;
+}
+
 type PropsType = {
-  timeFrame?: string;
+  data: Product[];
   className?: string;
 };
 
-export async function TopProductsByOrder({
-  timeFrame = "monthly",
-  className,
-}: PropsType) {
-  const data = await getTopProductsByOrderData(timeFrame);
+export function TopProductsByOrder({ data, className }: PropsType) {
+
+  // Process data for the chart: get top 5 products by inventory quantity
+  const chartData = (data || [])
+    .sort((a, b) => b.inv_item_qty - a.inv_item_qty)
+    .slice(0, 5)
+    .map(product => ({
+      name: product.title,
+      amount: product.inv_item_qty
+    }));
 
   return (
     <div
@@ -23,14 +34,12 @@ export async function TopProductsByOrder({
     >
       <div className="flex flex-wrap items-center justify-between gap-4">
         <h2 className="text-body-2xlg font-bold text-dark dark:text-white">
-          Top 5 Products by Customer Order
+          Top 5 Products by Inventory Quantity
         </h2>
-
-        <PeriodPicker defaultValue={timeFrame} sectionKey="top_products_by_order" />
       </div>
 
       <div className="grid place-items-center">
-        <DonutChart data={data} />
+        <DonutChart data={chartData} />
       </div>
     </div>
   );

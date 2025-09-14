@@ -1,41 +1,68 @@
+"use client";
+
 import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
-
-import { TopChannels } from "@/components/Tables/top-customers";
-// import { TopChannelsSkeleton } from "@/components/Tables/top-customers/skeleton";
-import { TopProducts } from "@/components/Tables/top-products";
-import { TopProductsSkeleton } from "@/components/Tables/top-products/skeleton";
 import { TopProductsByOrder } from "@/components/Charts/TopProductsByOrder";
-import { UsedDevicesSkeleton } from "@/components/Charts/used-devices/skeleton";
+import { TopProductsTable } from "@/components/Tables/TopProductsTable";
+import { AllProductsTable } from "@/components/Tables/AllProductsTable";
+import { useEffect, useState } from "react";
 
-import { Metadata } from "next";
-import { Suspense } from "react";
+// Define the Product type based on the backend model
+interface Product {
+  title: string;
+  price: number;
+  inv_item_qty: number;
+  weight: number | null;
+}
 
-export const metadata: Metadata = {
-  title: "Tables",
-};
+const ProductDashboardPage = () => {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-const TablesPage = () => {
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const res = await fetch("http://localhost:8000/user/get-products", {
+          credentials: "include", // Important to send the auth cookie
+        });
+
+        if (!res.ok) {
+          throw new Error(`Failed to fetch products: ${res.statusText}`);
+        }
+
+        const data = await res.json();
+        setProducts(data);
+      } catch (e: any) {
+        setError(e.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
   return (
     <>
-      <Breadcrumb pageName="Tables" />
+      <Breadcrumb pageName="Products" />
 
-      <div className="space-y-10">
-        {/* <Suspense fallback={<TopChannelsSkeleton />}>
-          <TopChannels />
-        </Suspense> */}
-        
-        <Suspense fallback={<UsedDevicesSkeleton />}>
-          <TopProductsByOrder />
-        </Suspense>
+      {loading && (
+        <div className="text-center">Loading product data...</div>
+      )}
 
-        <Suspense fallback={<TopProductsSkeleton />}>
-          <TopProducts />
-        </Suspense>
+      {error && (
+        <div className="text-center text-red-500">Error: {error}</div>
+      )}
 
-        
-      </div>
+      {!loading && !error && (
+        <div className="space-y-10">
+          <TopProductsByOrder data={products} />
+          <TopProductsTable data={products} />
+          <AllProductsTable data={products} />
+        </div>
+      )}
     </>
   );
 };
 
-export default TablesPage;
+export default ProductDashboardPage;
