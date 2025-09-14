@@ -27,19 +27,19 @@ export async function getOverviewData() {
   return {
     views: {
       value: 2456, // This can be updated if view data becomes available
-      growthRate: 0.43,
+      // growthRate: 0.43,
     },
     profit: {
       value: totalRevenue,
-      growthRate: 4.35, // This should be calculated based on historical data if available
+      // growthRate: 4.35, // This should be calculated based on historical data if available
     },
     products: {
       value: products.length,
-      growthRate: 2.59, // This should be calculated
+      // growthRate: 2.59, // This should be calculated
     },
     users: {
       value: customers.length,
-      growthRate: -0.95, // This should be calculated
+      // growthRate: -0.95, // This should be calculated
     },
   };
 }

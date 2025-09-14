@@ -65,7 +65,7 @@ export function AllProductsTable({ data, className }: { data: Product[], classNa
                 {product.title}
               </TableCell>
 
-              <TableCell>${product.price.toFixed(2)}</TableCell>
+              <TableCell>{product.price.toFixed(2)}</TableCell>
 
               <TableCell>{product.inv_item_qty}</TableCell>
 
