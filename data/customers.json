@@ -1,0 +1,901 @@
+[{
+    "last_name":  "Reddy",
+    "id":  9319172300000,
+    "timestamp":  "2023-01-02T22:55:35Z",
+    "shop_id":  101,
+    "tags":  "vip",
+    "first_name":  "Aarav",
+    "phone":  "9876576343",
+    "email":  "arjun.sharma1@example.com"
+},{
+    "last_name":  "Gupta",
+    "id":  9319172300001,
+    "timestamp":  "2023-01-03T22:55:35Z",
+    "shop_id":  102,
+    "tags":  "vip",
+    "first_name":  "Aarav",
+    "phone":  "9876541017",
+    "email":  "vivaan.verma2@example.com"
+},{
+    "last_name":  "Sharma",
+    "id":  9319172300002,
+    "timestamp":  "2023-01-04T22:55:35Z",
+    "shop_id":  101,
+    "tags":  "loyal",
+    "first_name":  "Isha",
+    "phone":  "9876541328",
+    "email":  "rohan.reddy3@example.com"
+},{
+    "last_name":  "Reddy",
+    "id":  9319172300003,
+    "timestamp":  "2023-01-05T22:55:35Z",
+    "shop_id":  102,
+    "tags":  "new_customer",
+    "first_name":  "Ananya",
+    "phone":  "9876594077",
+    "email":  "arjun.kumar4@example.com"
+},{
+    "last_name":  "Patel",
+    "id":  9319172300004,
+    "timestamp":  "2023-01-06T22:55:35Z",
+    "shop_id":  101,
+    "tags":  "loyal",
+    "first_name":  "Ananya",
+    "phone":  "9876568293",
+    "email":  "arjun.sharma5@example.com"
+},{
+    "last_name":  "Gupta",
+    "id":  9319172300005,
+    "timestamp":  "2023-01-07T22:55:35Z",
+    "shop_id":  102,
+    "tags":  "new_customer",
+    "first_name":  "Diya",
+    "phone":  "9876564496",
+    "email":  "myra.gupta6@example.com"
+},{
+    "last_name":  "Das",
+    "id":  9319172300006,
+    "timestamp":  "2023-01-08T22:55:35Z",
+    "shop_id":  101,
+    "tags":  "loyal",
+    "first_name":  "Myra",
+    "phone":  "9876575341",
+    "email":  "ananya.mehta7@example.com"
+},{
+    "last_name":  "Singh",
+    "id":  9319172300007,
+    "timestamp":  "2023-01-09T22:55:35Z",
+    "shop_id":  102,
+    "tags":  "vip",
+    "first_name":  "Vivaan",
+    "phone":  "9876549618",
+    "email":  "rohan.verma8@example.com"
+},{
+    "last_name":  "Reddy",
+    "id":  9319172300008,
+    "timestamp":  "2023-01-10T22:55:35Z",
+    "shop_id":  101,
+    "tags":  "new_customer",
+    "first_name":  "Arjun",
+    "phone":  "9876556340",
+    "email":  "rohan.verma9@example.com"
+},{
+    "last_name":  "Sharma",
+    "id":  9319172300009,
+    "timestamp":  "2023-01-11T22:55:35Z",
+    "shop_id":  102,
+    "tags":  "vip",
+    "first_name":  "Arjun",
+    "phone":  "9876512364",
+    "email":  "aarav.reddy10@example.com"
+},{
+    "last_name":  "Reddy",
+    "id":  9319172300010,
+    "timestamp":  "2023-01-12T22:55:35Z",
+    "shop_id":  101,
+    "tags":  "new_customer",
+    "first_name":  "Myra",
+    "phone":  "9876569241",
+    "email":  "saanvi.kumar11@example.com"
+},{
+    "last_name":  "Mehta",
+    "id":  9319172300011,
+    "timestamp":  "2023-01-13T22:55:35Z",
+    "shop_id":  102,
+    "tags":  "loyal",
+    "first_name":  "Aarav",
+    "phone":  "9876553461",
+    "email":  "myra.kumar12@example.com"
+},{
+    "last_name":  "Gupta",
+    "id":  9319172300012,
+    "timestamp":  "2023-01-14T22:55:35Z",
+    "shop_id":  101,
+    "tags":  "new_customer",
+    "first_name":  "Diya",
+    "phone":  "9876510585",
+    "email":  "vivaan.sharma13@example.com"
+},{
+    "last_name":  "Mehta",
+    "id":  9319172300013,
+    "timestamp":  "2023-01-15T22:55:35Z",
+    "shop_id":  102,
+    "tags":  "loyal",
+    "first_name":  "Arjun",
+    "phone":  "9876538622",
+    "email":  "saanvi.mehta14@example.com"
+},{
+    "last_name":  "Mehta",
+    "id":  9319172300014,
+    "timestamp":  "2023-01-16T22:55:35Z",
+    "shop_id":  101,
+    "tags":  "new_customer",
+    "first_name":  "Saanvi",
+    "phone":  "9876520397",
+    "email":  "aarav.sharma15@example.com"
+},{
+    "last_name":  "Reddy",
+    "id":  9319172300015,
+    "timestamp":  "2023-01-17T22:55:35Z",
+    "shop_id":  102,
+    "tags":  "new_customer",
+    "first_name":  "Ananya",
+    "phone":  "9876547105",
+    "email":  "vivaan.sharma16@example.com"
+},{
+    "last_name":  "Gupta",
+    "id":  9319172300016,
+    "timestamp":  "2023-01-18T22:55:35Z",
+    "shop_id":  101,
+    "tags":  "vip",
+    "first_name":  "Saanvi",
+    "phone":  "9876537819",
+    "email":  "sai.gupta17@example.com"
+},{
+    "last_name":  "Sharma",
+    "id":  9319172300017,
+    "timestamp":  "2023-01-19T22:55:35Z",
+    "shop_id":  102,
+    "tags":  "loyal",
+    "first_name":  "Arjun",
+    "phone":  "9876551871",
+    "email":  "aarav.singh18@example.com"
+},{
+    "last_name":  "Verma",
+    "id":  9319172300018,
+    "timestamp":  "2023-01-20T22:55:35Z",
+    "shop_id":  101,
+    "tags":  "vip",
+    "first_name":  "Saanvi",
+    "phone":  "9876543536",
+    "email":  "myra.gupta19@example.com"
+},{
+    "last_name":  "Patel",
+    "id":  9319172300019,
+    "timestamp":  "2023-01-21T22:55:35Z",
+    "shop_id":  102,
+    "tags":  "loyal",
+    "first_name":  "Ananya",
+    "phone":  "9876577313",
+    "email":  "sai.kumar20@example.com"
+},{
+    "last_name":  "Patel",
+    "id":  9319172300020,
+    "timestamp":  "2023-01-22T22:55:35Z",
+    "shop_id":  101,
+    "tags":  "new_customer",
+    "first_name":  "Saanvi",
+    "phone":  "9876596979",
+    "email":  "aarav.reddy21@example.com"
+},{
+    "last_name":  "Gupta",
+    "id":  9319172300021,
+    "timestamp":  "2023-01-23T22:55:35Z",
+    "shop_id":  102,
+    "tags":  "loyal",
+    "first_name":  "Arjun",
+    "phone":  "9876545438",
+    "email":  "ananya.kumar22@example.com"
+},{
+    "last_name":  "Jain",
+    "id":  9319172300022,
+    "timestamp":  "2023-01-24T22:55:35Z",
+    "shop_id":  101,
+    "tags":  "loyal",
+    "first_name":  "Vivaan",
+    "phone":  "9876524966",
+    "email":  "diya.verma23@example.com"
+},{
+    "last_name":  "Gupta",
+    "id":  9319172300023,
+    "timestamp":  "2023-01-25T22:55:35Z",
+    "shop_id":  102,
+    "tags":  "loyal",
+    "first_name":  "Ananya",
+    "phone":  "9876569906",
+    "email":  "isha.jain24@example.com"
+},{
+    "last_name":  "Jain",
+    "id":  9319172300024,
+    "timestamp":  "2023-01-26T22:55:35Z",
+    "shop_id":  101,
+    "tags":  "loyal",
+    "first_name":  "Aarav",
+    "phone":  "9876521931",
+    "email":  "aarav.das25@example.com"
+},{
+    "last_name":  "Sharma",
+    "id":  9319172300025,
+    "timestamp":  "2023-01-27T22:55:35Z",
+    "shop_id":  102,
+    "tags":  "loyal",
+    "first_name":  "Arjun",
+    "phone":  "9876599162",
+    "email":  "sai.gupta26@example.com"
+},{
+    "last_name":  "Reddy",
+    "id":  9319172300026,
+    "timestamp":  "2023-01-28T22:55:35Z",
+    "shop_id":  101,
+    "tags":  "loyal",
+    "first_name":  "Ananya",
+    "phone":  "9876543225",
+    "email":  "arjun.verma27@example.com"
+},{
+    "last_name":  "Das",
+    "id":  9319172300027,
+    "timestamp":  "2023-01-29T22:55:35Z",
+    "shop_id":  102,
+    "tags":  "new_customer",
+    "first_name":  "Rohan",
+    "phone":  "9876589647",
+    "email":  "arjun.das28@example.com"
+},{
+    "last_name":  "Reddy",
+    "id":  9319172300028,
+    "timestamp":  "2023-01-30T22:55:35Z",
+    "shop_id":  101,
+    "tags":  "new_customer",
+    "first_name":  "Arjun",
+    "phone":  "9876510704",
+    "email":  "diya.das29@example.com"
+},{
+    "last_name":  "Verma",
+    "id":  9319172300029,
+    "timestamp":  "2023-01-31T22:55:35Z",
+    "shop_id":  102,
+    "tags":  "vip",
+    "first_name":  "Sai",
+    "phone":  "9876519597",
+    "email":  "arjun.jain30@example.com"
+},{
+    "last_name":  "Singh",
+    "id":  9319172300030,
+    "timestamp":  "2023-02-01T22:55:35Z",
+    "shop_id":  101,
+    "tags":  "loyal",
+    "first_name":  "Vivaan",
+    "phone":  "9876537033",
+    "email":  "ananya.singh31@example.com"
+},{
+    "last_name":  "Kumar",
+    "id":  9319172300031,
+    "timestamp":  "2023-02-02T22:55:35Z",
+    "shop_id":  102,
+    "tags":  "new_customer",
+    "first_name":  "Diya",
+    "phone":  "9876547724",
+    "email":  "saanvi.jain32@example.com"
+},{
+    "last_name":  "Singh",
+    "id":  9319172300032,
+    "timestamp":  "2023-02-03T22:55:35Z",
+    "shop_id":  101,
+    "tags":  "loyal",
+    "first_name":  "Vivaan",
+    "phone":  "9876559339",
+    "email":  "isha.sharma33@example.com"
+},{
+    "last_name":  "Singh",
+    "id":  9319172300033,
+    "timestamp":  "2023-02-04T22:55:35Z",
+    "shop_id":  102,
+    "tags":  "loyal",
+    "first_name":  "Arjun",
+    "phone":  "9876564013",
+    "email":  "aarav.patel34@example.com"
+},{
+    "last_name":  "Mehta",
+    "id":  9319172300034,
+    "timestamp":  "2023-02-05T22:55:35Z",
+    "shop_id":  101,
+    "tags":  "new_customer",
+    "first_name":  "Sai",
+    "phone":  "9876555989",
+    "email":  "vivaan.singh35@example.com"
+},{
+    "last_name":  "Verma",
+    "id":  9319172300035,
+    "timestamp":  "2023-02-06T22:55:35Z",
+    "shop_id":  102,
+    "tags":  "loyal",
+    "first_name":  "Saanvi",
+    "phone":  "9876549804",
+    "email":  "aarav.verma36@example.com"
+},{
+    "last_name":  "Patel",
+    "id":  9319172300036,
+    "timestamp":  "2023-02-07T22:55:35Z",
+    "shop_id":  101,
+    "tags":  "vip",
+    "first_name":  "Vivaan",
+    "phone":  "9876517114",
+    "email":  "myra.reddy37@example.com"
+},{
+    "last_name":  "Verma",
+    "id":  9319172300037,
+    "timestamp":  "2023-02-08T22:55:35Z",
+    "shop_id":  102,
+    "tags":  "loyal",
+    "first_name":  "Aarav",
+    "phone":  "9876526828",
+    "email":  "saanvi.sharma38@example.com"
+},{
+    "last_name":  "Sharma",
+    "id":  9319172300038,
+    "timestamp":  "2023-02-09T22:55:35Z",
+    "shop_id":  101,
+    "tags":  "loyal",
+    "first_name":  "Diya",
+    "phone":  "9876566800",
+    "email":  "rohan.kumar39@example.com"
+},{
+    "last_name":  "Kumar",
+    "id":  9319172300039,
+    "timestamp":  "2023-02-10T22:55:35Z",
+    "shop_id":  102,
+    "tags":  "loyal",
+    "first_name":  "Rohan",
+    "phone":  "9876546357",
+    "email":  "sai.verma40@example.com"
+},{
+    "last_name":  "Singh",
+    "id":  9319172300040,
+    "timestamp":  "2023-02-11T22:55:35Z",
+    "shop_id":  101,
+    "tags":  "vip",
+    "first_name":  "Aarav",
+    "phone":  "9876535168",
+    "email":  "ananya.kumar41@example.com"
+},{
+    "last_name":  "Mehta",
+    "id":  9319172300041,
+    "timestamp":  "2023-02-12T22:55:35Z",
+    "shop_id":  102,
+    "tags":  "new_customer",
+    "first_name":  "Aarav",
+    "phone":  "9876597759",
+    "email":  "rohan.patel42@example.com"
+},{
+    "last_name":  "Sharma",
+    "id":  9319172300042,
+    "timestamp":  "2023-02-13T22:55:35Z",
+    "shop_id":  101,
+    "tags":  "loyal",
+    "first_name":  "Rohan",
+    "phone":  "9876519285",
+    "email":  "arjun.gupta43@example.com"
+},{
+    "last_name":  "Das",
+    "id":  9319172300043,
+    "timestamp":  "2023-02-14T22:55:35Z",
+    "shop_id":  102,
+    "tags":  "vip",
+    "first_name":  "Myra",
+    "phone":  "9876535248",
+    "email":  "sai.reddy44@example.com"
+},{
+    "last_name":  "Sharma",
+    "id":  9319172300044,
+    "timestamp":  "2023-02-15T22:55:35Z",
+    "shop_id":  101,
+    "tags":  "loyal",
+    "first_name":  "Ananya",
+    "phone":  "9876583272",
+    "email":  "arjun.gupta45@example.com"
+},{
+    "last_name":  "Sharma",
+    "id":  9319172300045,
+    "timestamp":  "2023-02-16T22:55:35Z",
+    "shop_id":  102,
+    "tags":  "loyal",
+    "first_name":  "Isha",
+    "phone":  "9876515753",
+    "email":  "arjun.gupta46@example.com"
+},{
+    "last_name":  "Verma",
+    "id":  9319172300046,
+    "timestamp":  "2023-02-17T22:55:35Z",
+    "shop_id":  101,
+    "tags":  "new_customer",
+    "first_name":  "Arjun",
+    "phone":  "9876555248",
+    "email":  "diya.mehta47@example.com"
+},{
+    "last_name":  "Kumar",
+    "id":  9319172300047,
+    "timestamp":  "2023-02-18T22:55:35Z",
+    "shop_id":  102,
+    "tags":  "loyal",
+    "first_name":  "Isha",
+    "phone":  "9876548059",
+    "email":  "diya.mehta48@example.com"
+},{
+    "last_name":  "Jain",
+    "id":  9319172300048,
+    "timestamp":  "2023-02-19T22:55:35Z",
+    "shop_id":  101,
+    "tags":  "new_customer",
+    "first_name":  "Vivaan",
+    "phone":  "9876577645",
+    "email":  "isha.kumar49@example.com"
+},{
+    "last_name":  "Kumar",
+    "id":  9319172300049,
+    "timestamp":  "2023-02-20T22:55:35Z",
+    "shop_id":  102,
+    "tags":  "new_customer",
+    "first_name":  "Vivaan",
+    "phone":  "9876597430",
+    "email":  "vivaan.kumar50@example.com"
+},{
+    "last_name":  "Kumar",
+    "id":  9319172300050,
+    "timestamp":  "2023-02-21T22:55:35Z",
+    "shop_id":  101,
+    "tags":  "vip",
+    "first_name":  "Ananya",
+    "phone":  "9876560225",
+    "email":  "vivaan.mehta51@example.com"
+},{
+    "last_name":  "Patel",
+    "id":  9319172300051,
+    "timestamp":  "2023-02-22T22:55:35Z",
+    "shop_id":  102,
+    "tags":  "loyal",
+    "first_name":  "Myra",
+    "phone":  "9876560320",
+    "email":  "arjun.singh52@example.com"
+},{
+    "last_name":  "Sharma",
+    "id":  9319172300052,
+    "timestamp":  "2023-02-23T22:55:35Z",
+    "shop_id":  101,
+    "tags":  "vip",
+    "first_name":  "Aarav",
+    "phone":  "9876520553",
+    "email":  "isha.verma53@example.com"
+},{
+    "last_name":  "Gupta",
+    "id":  9319172300053,
+    "timestamp":  "2023-02-24T22:55:35Z",
+    "shop_id":  102,
+    "tags":  "loyal",
+    "first_name":  "Ananya",
+    "phone":  "9876599486",
+    "email":  "arjun.sharma54@example.com"
+},{
+    "last_name":  "Sharma",
+    "id":  9319172300054,
+    "timestamp":  "2023-02-25T22:55:35Z",
+    "shop_id":  101,
+    "tags":  "loyal",
+    "first_name":  "Sai",
+    "phone":  "9876562582",
+    "email":  "rohan.jain55@example.com"
+},{
+    "last_name":  "Reddy",
+    "id":  9319172300055,
+    "timestamp":  "2023-02-26T22:55:35Z",
+    "shop_id":  102,
+    "tags":  "loyal",
+    "first_name":  "Ananya",
+    "phone":  "9876527572",
+    "email":  "sai.sharma56@example.com"
+},{
+    "last_name":  "Kumar",
+    "id":  9319172300056,
+    "timestamp":  "2023-02-27T22:55:35Z",
+    "shop_id":  101,
+    "tags":  "new_customer",
+    "first_name":  "Vivaan",
+    "phone":  "9876538644",
+    "email":  "vivaan.patel57@example.com"
+},{
+    "last_name":  "Singh",
+    "id":  9319172300057,
+    "timestamp":  "2023-02-28T22:55:35Z",
+    "shop_id":  102,
+    "tags":  "vip",
+    "first_name":  "Ananya",
+    "phone":  "9876531900",
+    "email":  "ananya.das58@example.com"
+},{
+    "last_name":  "Jain",
+    "id":  9319172300058,
+    "timestamp":  "2023-03-01T22:55:35Z",
+    "shop_id":  101,
+    "tags":  "vip",
+    "first_name":  "Diya",
+    "phone":  "9876531616",
+    "email":  "isha.singh59@example.com"
+},{
+    "last_name":  "Mehta",
+    "id":  9319172300059,
+    "timestamp":  "2023-03-02T22:55:35Z",
+    "shop_id":  102,
+    "tags":  "vip",
+    "first_name":  "Saanvi",
+    "phone":  "9876548387",
+    "email":  "saanvi.singh60@example.com"
+},{
+    "last_name":  "Singh",
+    "id":  9319172300060,
+    "timestamp":  "2023-03-03T22:55:35Z",
+    "shop_id":  101,
+    "tags":  "vip",
+    "first_name":  "Sai",
+    "phone":  "9876573259",
+    "email":  "sai.patel61@example.com"
+},{
+    "last_name":  "Patel",
+    "id":  9319172300061,
+    "timestamp":  "2023-03-04T22:55:35Z",
+    "shop_id":  102,
+    "tags":  "loyal",
+    "first_name":  "Ananya",
+    "phone":  "9876549717",
+    "email":  "aarav.mehta62@example.com"
+},{
+    "last_name":  "Singh",
+    "id":  9319172300062,
+    "timestamp":  "2023-03-05T22:55:35Z",
+    "shop_id":  101,
+    "tags":  "vip",
+    "first_name":  "Vivaan",
+    "phone":  "9876534780",
+    "email":  "isha.verma63@example.com"
+},{
+    "last_name":  "Mehta",
+    "id":  9319172300063,
+    "timestamp":  "2023-03-06T22:55:35Z",
+    "shop_id":  102,
+    "tags":  "loyal",
+    "first_name":  "Myra",
+    "phone":  "9876571320",
+    "email":  "aarav.kumar64@example.com"
+},{
+    "last_name":  "Gupta",
+    "id":  9319172300064,
+    "timestamp":  "2023-03-07T22:55:35Z",
+    "shop_id":  101,
+    "tags":  "vip",
+    "first_name":  "Myra",
+    "phone":  "9876557236",
+    "email":  "ananya.das65@example.com"
+},{
+    "last_name":  "Verma",
+    "id":  9319172300065,
+    "timestamp":  "2023-03-08T22:55:35Z",
+    "shop_id":  102,
+    "tags":  "loyal",
+    "first_name":  "Myra",
+    "phone":  "9876538699",
+    "email":  "sai.singh66@example.com"
+},{
+    "last_name":  "Kumar",
+    "id":  9319172300066,
+    "timestamp":  "2023-03-09T22:55:35Z",
+    "shop_id":  101,
+    "tags":  "new_customer",
+    "first_name":  "Rohan",
+    "phone":  "9876547345",
+    "email":  "rohan.kumar67@example.com"
+},{
+    "last_name":  "Kumar",
+    "id":  9319172300067,
+    "timestamp":  "2023-03-10T22:55:35Z",
+    "shop_id":  102,
+    "tags":  "vip",
+    "first_name":  "Myra",
+    "phone":  "9876519754",
+    "email":  "myra.gupta68@example.com"
+},{
+    "last_name":  "Sharma",
+    "id":  9319172300068,
+    "timestamp":  "2023-03-11T22:55:35Z",
+    "shop_id":  101,
+    "tags":  "vip",
+    "first_name":  "Vivaan",
+    "phone":  "9876583256",
+    "email":  "myra.mehta69@example.com"
+},{
+    "last_name":  "Gupta",
+    "id":  9319172300069,
+    "timestamp":  "2023-03-12T22:55:35Z",
+    "shop_id":  102,
+    "tags":  "loyal",
+    "first_name":  "Ananya",
+    "phone":  "9876594749",
+    "email":  "arjun.reddy70@example.com"
+},{
+    "last_name":  "Verma",
+    "id":  9319172300070,
+    "timestamp":  "2023-03-13T22:55:35Z",
+    "shop_id":  101,
+    "tags":  "vip",
+    "first_name":  "Rohan",
+    "phone":  "9876596048",
+    "email":  "isha.verma71@example.com"
+},{
+    "last_name":  "Patel",
+    "id":  9319172300071,
+    "timestamp":  "2023-03-14T22:55:35Z",
+    "shop_id":  102,
+    "tags":  "new_customer",
+    "first_name":  "Diya",
+    "phone":  "9876566998",
+    "email":  "rohan.jain72@example.com"
+},{
+    "last_name":  "Patel",
+    "id":  9319172300072,
+    "timestamp":  "2023-03-15T22:55:35Z",
+    "shop_id":  101,
+    "tags":  "vip",
+    "first_name":  "Isha",
+    "phone":  "9876572579",
+    "email":  "sai.jain73@example.com"
+},{
+    "last_name":  "Jain",
+    "id":  9319172300073,
+    "timestamp":  "2023-03-16T22:55:35Z",
+    "shop_id":  102,
+    "tags":  "loyal",
+    "first_name":  "Ananya",
+    "phone":  "9876582879",
+    "email":  "arjun.mehta74@example.com"
+},{
+    "last_name":  "Reddy",
+    "id":  9319172300074,
+    "timestamp":  "2023-03-17T22:55:35Z",
+    "shop_id":  101,
+    "tags":  "new_customer",
+    "first_name":  "Isha",
+    "phone":  "9876531933",
+    "email":  "sai.sharma75@example.com"
+},{
+    "last_name":  "Reddy",
+    "id":  9319172300075,
+    "timestamp":  "2023-03-18T22:55:35Z",
+    "shop_id":  102,
+    "tags":  "loyal",
+    "first_name":  "Vivaan",
+    "phone":  "9876574469",
+    "email":  "isha.das76@example.com"
+},{
+    "last_name":  "Verma",
+    "id":  9319172300076,
+    "timestamp":  "2023-03-19T22:55:35Z",
+    "shop_id":  101,
+    "tags":  "vip",
+    "first_name":  "Ananya",
+    "phone":  "9876593028",
+    "email":  "vivaan.verma77@example.com"
+},{
+    "last_name":  "Sharma",
+    "id":  9319172300077,
+    "timestamp":  "2023-03-20T22:55:35Z",
+    "shop_id":  102,
+    "tags":  "new_customer",
+    "first_name":  "Sai",
+    "phone":  "9876563260",
+    "email":  "saanvi.singh78@example.com"
+},{
+    "last_name":  "Patel",
+    "id":  9319172300078,
+    "timestamp":  "2023-03-21T22:55:35Z",
+    "shop_id":  101,
+    "tags":  "new_customer",
+    "first_name":  "Aarav",
+    "phone":  "9876557047",
+    "email":  "arjun.reddy79@example.com"
+},{
+    "last_name":  "Jain",
+    "id":  9319172300079,
+    "timestamp":  "2023-03-22T22:55:35Z",
+    "shop_id":  102,
+    "tags":  "vip",
+    "first_name":  "Sai",
+    "phone":  "9876522509",
+    "email":  "saanvi.gupta80@example.com"
+},{
+    "last_name":  "Kumar",
+    "id":  9319172300080,
+    "timestamp":  "2023-03-23T22:55:35Z",
+    "shop_id":  101,
+    "tags":  "loyal",
+    "first_name":  "Rohan",
+    "phone":  "9876558105",
+    "email":  "rohan.kumar81@example.com"
+},{
+    "last_name":  "Gupta",
+    "id":  9319172300081,
+    "timestamp":  "2023-03-24T22:55:35Z",
+    "shop_id":  102,
+    "tags":  "new_customer",
+    "first_name":  "Saanvi",
+    "phone":  "9876553549",
+    "email":  "ananya.verma82@example.com"
+},{
+    "last_name":  "Kumar",
+    "id":  9319172300082,
+    "timestamp":  "2023-03-25T22:55:35Z",
+    "shop_id":  101,
+    "tags":  "vip",
+    "first_name":  "Rohan",
+    "phone":  "9876524299",
+    "email":  "diya.singh83@example.com"
+},{
+    "last_name":  "Verma",
+    "id":  9319172300083,
+    "timestamp":  "2023-03-26T22:55:35Z",
+    "shop_id":  102,
+    "tags":  "vip",
+    "first_name":  "Arjun",
+    "phone":  "9876562477",
+    "email":  "aarav.sharma84@example.com"
+},{
+    "last_name":  "Verma",
+    "id":  9319172300084,
+    "timestamp":  "2023-03-27T22:55:35Z",
+    "shop_id":  101,
+    "tags":  "vip",
+    "first_name":  "Saanvi",
+    "phone":  "9876551961",
+    "email":  "aarav.reddy85@example.com"
+},{
+    "last_name":  "Kumar",
+    "id":  9319172300085,
+    "timestamp":  "2023-03-28T22:55:35Z",
+    "shop_id":  102,
+    "tags":  "new_customer",
+    "first_name":  "Saanvi",
+    "phone":  "9876556152",
+    "email":  "vivaan.jain86@example.com"
+},{
+    "last_name":  "Patel",
+    "id":  9319172300086,
+    "timestamp":  "2023-03-29T22:55:35Z",
+    "shop_id":  101,
+    "tags":  "loyal",
+    "first_name":  "Sai",
+    "phone":  "9876523957",
+    "email":  "rohan.das87@example.com"
+},{
+    "last_name":  "Das",
+    "id":  9319172300087,
+    "timestamp":  "2023-03-30T22:55:35Z",
+    "shop_id":  102,
+    "tags":  "vip",
+    "first_name":  "Diya",
+    "phone":  "9876552451",
+    "email":  "vivaan.jain88@example.com"
+},{
+    "last_name":  "Mehta",
+    "id":  9319172300088,
+    "timestamp":  "2023-03-31T22:55:35Z",
+    "shop_id":  101,
+    "tags":  "vip",
+    "first_name":  "Arjun",
+    "phone":  "9876519300",
+    "email":  "myra.verma89@example.com"
+},{
+    "last_name":  "Sharma",
+    "id":  9319172300089,
+    "timestamp":  "2023-04-01T22:55:35Z",
+    "shop_id":  102,
+    "tags":  "new_customer",
+    "first_name":  "Myra",
+    "phone":  "9876585789",
+    "email":  "aarav.jain90@example.com"
+},{
+    "last_name":  "Gupta",
+    "id":  9319172300090,
+    "timestamp":  "2023-04-02T22:55:35Z",
+    "shop_id":  101,
+    "tags":  "vip",
+    "first_name":  "Rohan",
+    "phone":  "9876556596",
+    "email":  "rohan.verma91@example.com"
+},{
+    "last_name":  "Sharma",
+    "id":  9319172300091,
+    "timestamp":  "2023-04-03T22:55:35Z",
+    "shop_id":  102,
+    "tags":  "vip",
+    "first_name":  "Ananya",
+    "phone":  "9876595538",
+    "email":  "sai.gupta92@example.com"
+},{
+    "last_name":  "Patel",
+    "id":  9319172300092,
+    "timestamp":  "2023-04-04T22:55:35Z",
+    "shop_id":  101,
+    "tags":  "new_customer",
+    "first_name":  "Sai",
+    "phone":  "9876532592",
+    "email":  "sai.reddy93@example.com"
+},{
+    "last_name":  "Patel",
+    "id":  9319172300093,
+    "timestamp":  "2023-04-05T22:55:35Z",
+    "shop_id":  102,
+    "tags":  "new_customer",
+    "first_name":  "Aarav",
+    "phone":  "9876561121",
+    "email":  "saanvi.singh94@example.com"
+},{
+    "last_name":  "Gupta",
+    "id":  9319172300094,
+    "timestamp":  "2023-04-06T22:55:35Z",
+    "shop_id":  101,
+    "tags":  "loyal",
+    "first_name":  "Ananya",
+    "phone":  "9876568391",
+    "email":  "ananya.mehta95@example.com"
+},{
+    "last_name":  "Mehta",
+    "id":  9319172300095,
+    "timestamp":  "2023-04-07T22:55:35Z",
+    "shop_id":  102,
+    "tags":  "new_customer",
+    "first_name":  "Aarav",
+    "phone":  "9876554388",
+    "email":  "isha.mehta96@example.com"
+},{
+    "last_name":  "Jain",
+    "id":  9319172300096,
+    "timestamp":  "2023-04-08T22:55:35Z",
+    "shop_id":  101,
+    "tags":  "new_customer",
+    "first_name":  "Rohan",
+    "phone":  "9876562318",
+    "email":  "isha.singh97@example.com"
+},{
+    "last_name":  "Kumar",
+    "id":  9319172300097,
+    "timestamp":  "2023-04-09T22:55:35Z",
+    "shop_id":  102,
+    "tags":  "loyal",
+    "first_name":  "Isha",
+    "phone":  "9876563059",
+    "email":  "vivaan.mehta98@example.com"
+},{
+    "last_name":  "Reddy",
+    "id":  9319172300098,
+    "timestamp":  "2023-04-10T22:55:35Z",
+    "shop_id":  101,
+    "tags":  "new_customer",
+    "first_name":  "Ananya",
+    "phone":  "9876512456",
+    "email":  "rohan.das99@example.com"
+},{
+    "last_name":  "Verma",
+    "id":  9319172300099,
+    "timestamp":  "2023-04-11T22:55:35Z",
+    "shop_id":  102,
+    "tags":  "loyal",
+    "first_name":  "Vivaan",
+    "phone":  "9876544896",
+    "email":  "ananya.gupta100@example.com"
+}]

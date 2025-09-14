@@ -1,7 +1,8 @@
 "use client";
 
 import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
-import { TopChannels } from "@/components/Tables/top-customers";
+import { AllCustomersTable } from "@/components/Tables/AllCustomersTable";
+import { TopCustomersTable } from "@/components/Tables/TopCustomersTable";
 import { TopCustomersByOrder } from "@/components/Charts/TopCustomersByOrder";
 import { useEffect, useState } from "react";
 
@@ -60,7 +61,8 @@ const CustomerDashboardPage = () => {
       {!loading && !error && (
         <div className="space-y-10">
           <TopCustomersByOrder data={customers} />
-          <TopChannels data={customers} />
+          <TopCustomersTable data={customers} />
+          <AllCustomersTable data={customers} />
         </div>
       )}
     </>

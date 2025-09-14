@@ -1,3 +1,4 @@
+
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { cn } from "@/lib/utils";
 
@@ -12,7 +13,12 @@ interface Customer {
   tags: string | null;
 }
 
-export function TopChannels({ data, className }: { data: Customer[], className?: string }) {
+export function TopCustomersTable({ data, className }: { data: Customer[], className?: string }) {
+
+  // Process data for the table: get top 5 customers by revenue
+  const topCustomers = (data || [])
+    .sort((a, b) => b.revenue_generated - a.revenue_generated)
+    .slice(0, 5);
 
   return (
     <div
@@ -22,7 +28,7 @@ export function TopChannels({ data, className }: { data: Customer[], className?:
       )}
     >
       <h2 className="mb-4 text-body-2xlg font-bold text-dark dark:text-white">
-        Top Customers
+        Top 5 Customers by Revenue
       </h2>
 
       <Table>
@@ -37,7 +43,7 @@ export function TopChannels({ data, className }: { data: Customer[], className?:
         </TableHeader>
 
         <TableBody>
-          {(data || []).map((customer) => (
+          {topCustomers.map((customer) => (
             <TableRow
               className="text-center text-base font-medium text-dark dark:text-white"
               key={customer.id}
