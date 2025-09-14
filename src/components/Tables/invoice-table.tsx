@@ -33,11 +33,24 @@ export function InvoiceTable({ data, totalOrders, currentPage }: InvoiceTablePro
     router.push(`?${current.toString()}`);
   };
 
+  const handleSortByTimestamp = () => {
+    console.log("Sort by Timestamp button clicked!");
+    // Future integration with backend sorting logic will go here
+  };
+
   return (
     <div className="rounded-[10px] border border-stroke bg-white p-4 shadow-1 dark:border-dark-3 dark:bg-gray-dark dark:shadow-card sm:p-7.5">
-      <h2 className="mb-4 text-body-2xlg font-bold text-dark dark:text-white">
-        All Order Detail Table
-      </h2>
+      <div className="mb-4 flex items-center justify-between">
+        <h2 className="text-body-2xlg font-bold text-dark dark:text-white">
+          All Order Detail Table
+        </h2>
+        <button
+          onClick={handleSortByTimestamp}
+          className="px-4 py-2 text-sm font-medium text-dark dark:text-white disabled:opacity-50 border rounded-md"
+        >
+          Sort by Timestamp
+        </button>
+      </div>
       <Table>
         <TableHeader>
           <TableRow className="border-none bg-[#F7F9FC] dark:bg-dark-2 [&>th]:py-4 [&>th]:text-base [&>th]:text-dark [&>th]:dark:text-white">
@@ -51,7 +64,7 @@ export function InvoiceTable({ data, totalOrders, currentPage }: InvoiceTablePro
 
         <TableBody>
           {data.map((item: { name: string; price: number; date: string; status: string; quantity: number; discount: number }, index: number) => (
-            <TableRow key={index} className="border-[#eee] dark:border-dark-3">
+            <TableRow key={index} className="border-[#eee] dark:border-3">
               <TableCell className="min-w-[155px] xl:pl-7.5">
                 <h5 className="text-dark dark:text-white">{item.name}</h5>
               </TableCell>
@@ -92,18 +105,21 @@ export function InvoiceTable({ data, totalOrders, currentPage }: InvoiceTablePro
         </TableBody>
       </Table>
 
-      <div className="mt-4 flex justify-end gap-4">
+      <div className="mt-4 flex justify-end">
         <button
           onClick={() => handlePageChange(currentPage - 1)}
           disabled={currentPage === 1}
-          className="rounded-md bg-gray-200 px-4 py-2 text-dark disabled:opacity-50"
+          className="px-4 py-2 text-sm font-medium text-dark dark:text-white disabled:opacity-50"
         >
           Previous
         </button>
+        <span className="px-4 py-2 text-sm font-medium text-dark dark:text-white">
+          {currentPage} / {totalPages}
+        </span>
         <button
           onClick={() => handlePageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
-          className="rounded-md bg-gray-200 px-4 py-2 text-dark disabled:opacity-50"
+          className="px-4 py-2 text-sm font-medium text-dark dark:text-white disabled:opacity-50"
         >
           Next
         </button>
