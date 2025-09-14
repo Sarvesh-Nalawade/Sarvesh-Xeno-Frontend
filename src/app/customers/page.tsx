@@ -1,37 +1,70 @@
+"use client";
+
 import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
-
 import { TopChannels } from "@/components/Tables/top-customers";
-import { TopChannelsSkeleton } from "@/components/Tables/top-customers/skeleton";
 import { TopCustomersByOrder } from "@/components/Charts/TopCustomersByOrder";
-import { UsedDevicesSkeleton } from "@/components/Charts/used-devices/skeleton";
-// import { TopProducts } from "@/components/Tables/top-products";
-// import { TopProductsSkeleton } from "@/components/Tables/top-products/skeleton";
+import { useEffect, useState } from "react";
 
-import { Metadata } from "next";
-import { Suspense } from "react";
+// Define the Customer type based on the backend model
+interface Customer {
+  id: number;
+  first_name: string;
+  last_name: string | null;
+  email: string | null;
+  phone: string | null;
+  revenue_generated: number;
+  tags: string | null;
+}
 
-export const metadata: Metadata = {
-  title: "Tables",
-};
 
-const TablesPage = () => {
+const CustomerDashboardPage = () => {
+  const [customers, setCustomers] = useState<Customer[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchCustomers = async () => {
+      try {
+        const res = await fetch("http://localhost:8000/user/get-customers", {
+          credentials: "include", // Important to send the auth cookie
+        });
+
+        if (!res.ok) {
+          throw new Error(`Failed to fetch customers: ${res.statusText}`);
+        }
+
+        const data = await res.json();
+        setCustomers(data);
+      } catch (e: any) {
+        setError(e.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCustomers();
+  }, []);
+
   return (
     <>
-      <Breadcrumb pageName="Tables" />
+      <Breadcrumb pageName="Customers" />
 
-      <div className="space-y-10">
-        
-        
-        <Suspense fallback={<UsedDevicesSkeleton />}>
-          <TopCustomersByOrder />
-        </Suspense>
+      {loading && (
+        <div className="text-center">Loading customer data...</div>
+      )}
 
-        <Suspense fallback={<TopChannelsSkeleton />}>
-          <TopChannels />
-        </Suspense>
-      </div>
+      {error && (
+        <div className="text-center text-red-500">Error: {error}</div>
+      )}
+
+      {!loading && !error && (
+        <div className="space-y-10">
+          <TopCustomersByOrder data={customers} />
+          <TopChannels data={customers} />
+        </div>
+      )}
     </>
   );
 };
 
-export default TablesPage;
+export default CustomerDashboardPage;

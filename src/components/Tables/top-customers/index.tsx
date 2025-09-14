@@ -1,18 +1,18 @@
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-// import { compactFormat, standardFormat } from "@/lib/format-number";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { cn } from "@/lib/utils";
-// import Image from "next/image";
-import { getTopChannels } from "../fetch";
 
-export async function TopChannels({ className }: { className?: string }) {
-  const data = await getTopChannels();
+// Define the Customer type based on the backend model
+interface Customer {
+  id: number;
+  first_name: string;
+  last_name: string | null;
+  email: string | null;
+  phone: string | null;
+  revenue_generated: number;
+  tags: string | null;
+}
+
+export function TopChannels({ data, className }: { data: Customer[], className?: string }) {
 
   return (
     <div
@@ -31,40 +31,29 @@ export async function TopChannels({ className }: { className?: string }) {
             <TableHead className="min-w-[120px] !text-left">Name</TableHead>
             <TableHead>Phone</TableHead>
             <TableHead className="!text-right">Email</TableHead>
-            <TableHead>city</TableHead>
             <TableHead>Revenue generated</TableHead>
             <TableHead>Tag</TableHead>
           </TableRow>
         </TableHeader>
 
         <TableBody>
-          {data.map((channel, i) => (
+          {(data || []).map((customer) => (
             <TableRow
               className="text-center text-base font-medium text-dark dark:text-white"
-              key={channel.name + i}
+              key={customer.id}
             >
-              <TableCell className="flex min-w-fit items-center gap-3">
-                {/* <Image
-                  src={channel.logo}
-                  className="size-8 rounded-full object-cover"
-                  width={40}
-                  height={40}
-                  alt={channel.name + " Logo"}
-                  role="presentation"
-                /> */}
-                <div className="">{channel.name}</div>
+              <TableCell className="flex min-w-fit items-center gap-3 text-left">
+                {customer.first_name} {customer.last_name}
               </TableCell>
 
-              <TableCell>{channel.phone}</TableCell>
+              <TableCell>{customer.phone || "N/A"}</TableCell>
 
               <TableCell className="!text-right text-green-light-1">
-                {channel.email}
+                {customer.email || "N/A"}
               </TableCell>
 
-              <TableCell>{channel.city}</TableCell>
-
-              <TableCell>{channel.revenue}</TableCell>
-              <TableCell>{channel.tag}</TableCell>
+              <TableCell>${customer.revenue_generated.toFixed(2)}</TableCell>
+              <TableCell>{customer.tags || "N/A"}</TableCell>
             </TableRow>
           ))}
         </TableBody>

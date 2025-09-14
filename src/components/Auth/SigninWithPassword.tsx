@@ -1,94 +1,126 @@
 "use client";
-import { EmailIcon, PasswordIcon } from "@/assets/icons";
-import Link from "next/link";
+import { EmailIcon } from "@/assets/icons";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import InputGroup from "../FormElements/InputGroup";
-import { Checkbox } from "../FormElements/checkbox";
 
 export default function SigninWithPassword() {
-  const [data, setData] = useState({
-    email: process.env.NEXT_PUBLIC_DEMO_USER_MAIL || "",
-    password: process.env.NEXT_PUBLIC_DEMO_USER_PASS || "",
-    remember: false,
-  });
-
+  const [email, setEmail] = useState(
+    process.env.NEXT_PUBLIC_DEMO_USER_MAIL || "",
+  );
+  const [otp, setOtp] = useState("");
+  const [otpSent, setOtpSent] = useState(false);
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setData({
-      ...data,
-      [e.target.name]: e.target.value,
-    });
+  const handleSendOtp = async () => {
+    if (!email) {
+      alert("Please enter your email.");
+      return;
+    }
+    setLoading(true);
+    try {
+      const res = await fetch("http://localhost:8000/auth/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+
+      if (res.ok) {
+        setOtpSent(true);
+        alert("OTP sent to your email!");
+      } else {
+        const errorData = await res.json();
+        alert(`Failed to send OTP: ${errorData.detail}`);
+      }
+    } catch (error) {
+      console.error("Error sending OTP:", error);
+      alert("An error occurred while sending the OTP.");
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    // You can remove this code block
+    if (!otp) {
+      alert("Please enter the OTP.");
+      return;
+    }
     setLoading(true);
+    try {
+      const res = await fetch("http://localhost:8000/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, otp: parseInt(otp, 10) }),
+      });
 
-    setTimeout(() => {
+      if (res.ok) {
+        alert("Login successful!");
+        router.push("/profile"); // Redirect to profile page on successful login
+      } else {
+        const errorData = await res.json();
+        alert(`Login failed: ${errorData.detail}`);
+      }
+    } catch (error) {
+      console.error("Error during login:", error);
+      alert("An error occurred during login.");
+    } finally {
       setLoading(false);
-    }, 1000);
+    }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleLogin}>
       <InputGroup
         type="email"
         label="Email"
         className="mb-4 [&_input]:py-[15px]"
         placeholder="Enter your email"
         name="email"
-        handleChange={handleChange}
-        value={data.email}
+        handleChange={(e) => setEmail(e.target.value)}
+        value={email}
         icon={<EmailIcon />}
+        disabled={otpSent}
       />
 
-      <InputGroup
-        type="password"
-        label="Password"
-        className="mb-5 [&_input]:py-[15px]"
-        placeholder="Enter your password"
-        name="password"
-        handleChange={handleChange}
-        value={data.password}
-        icon={<PasswordIcon />}
-      />
-
-      <div className="mb-6 flex items-center justify-between gap-2 py-2 font-medium">
-        <Checkbox
-          label="Remember me"
-          name="remember"
-          withIcon="check"
-          minimal
-          radius="md"
-          onChange={(e) =>
-            setData({
-              ...data,
-              remember: e.target.checked,
-            })
-          }
+      {otpSent && (
+        <InputGroup
+          type="text"
+          label="OTP"
+          className="mb-5 [&_input]:py-[15px]"
+          placeholder="Enter your OTP"
+          name="otp"
+          handleChange={(e) => setOtp(e.target.value)}
+          value={otp}
         />
-
-        <Link
-          href="/auth/forgot-password"
-          className="hover:text-primary dark:text-white dark:hover:text-primary"
-        >
-          Forgot Password?
-        </Link>
-      </div>
+      )}
 
       <div className="mb-4.5">
-        <button
-          type="submit"
-          className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-lg bg-primary p-4 font-medium text-white transition hover:bg-opacity-90"
-        >
-          Sign In
-          {loading && (
-            <span className="inline-block h-4 w-4 animate-spin rounded-full border-2 border-solid border-white border-t-transparent dark:border-primary dark:border-t-transparent" />
-          )}
-        </button>
+        {!otpSent ? (
+          <button
+            type="button"
+            onClick={handleSendOtp}
+            disabled={loading}
+            className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-lg bg-primary p-4 font-medium text-white transition hover:bg-opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            {loading ? "Sending..." : "Send OTP"}
+            {loading && (
+              <span className="inline-block h-4 w-4 animate-spin rounded-full border-2 border-solid border-white border-t-transparent" />
+            )}
+          </button>
+        ) : (
+          <button
+            type="submit"
+            disabled={loading}
+            className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-lg bg-primary p-4 font-medium text-white transition hover:bg-opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            {loading ? "Signing In..." : "Sign In"}
+            {loading && (
+              <span className="inline-block h-4 w-4 animate-spin rounded-full border-2 border-solid border-white border-t-transparent" />
+            )}
+          </button>
+        )}
       </div>
     </form>
   );
