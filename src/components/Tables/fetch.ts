@@ -62,7 +62,7 @@ export async function getTopProducts() {
   });
 }
 
-export async function getInvoiceTableData() {
+export async function getInvoiceTableData(page: number = 1, limit: number = 5) {
   // Fake delay
   await new Promise((resolve) => setTimeout(resolve, 1400));
 
@@ -74,7 +74,10 @@ export async function getInvoiceTableData() {
   const lineItemsData = await fs.readFile(lineItemsPath, "utf-8");
   const lineItems = JSON.parse(lineItemsData);
 
-  return orders.slice(0, 4).map((order: any) => {
+  const startIndex = (page - 1) * limit;
+  const endIndex = startIndex + limit;
+
+  const paginatedOrders = orders.slice(startIndex, endIndex).map((order: any) => {
     const items = lineItems.filter((li: any) => li.order_id === order.id);
     return {
       name: `Order #${order.order_number}`,
@@ -85,6 +88,11 @@ export async function getInvoiceTableData() {
       discount: order.total_discount,
     };
   });
+
+  return {
+    data: paginatedOrders,
+    totalOrders: orders.length,
+  };
 }
 
 export async function getTopChannels() {

@@ -6,20 +6,27 @@ import { WeeksProfit } from "@/components/Charts/weeks-profit";
 import { createTimeFrameExtractor } from "@/utils/timeframe-extractor";
 import { Suspense } from "react";
 import { InvoiceTable } from "@/components/Tables/invoice-table";
+import { getInvoiceTableData } from "@/components/Tables/fetch";
 // import { ChatsCard } from "./_components/chats-card";
 import { OverviewCardsGroup } from "./_components/overview-cards";
 import { OverviewCardsSkeleton } from "./_components/overview-cards/skeleton";
 import { RegionLabels } from "./_components/region-labels";
 
 type PropsType = {
-  searchParams: Promise<{
+  searchParams: {
     selected_time_frame?: string;
-  }>;
+    invoicePage?: string;
+  };
 };
 
 export default async function Home({ searchParams }: PropsType) {
-  const { selected_time_frame } = await searchParams;
+  const { selected_time_frame, invoicePage } = searchParams;
   const extractTimeFrame = createTimeFrameExtractor(selected_time_frame);
+
+  const currentPage = parseInt(invoicePage || "1");
+  const itemsPerPage = 5;
+
+  const { data: invoiceData, totalOrders } = await getInvoiceTableData(currentPage, itemsPerPage);
 
   return (
     <>
@@ -57,7 +64,7 @@ export default async function Home({ searchParams }: PropsType) {
 
         <div className="col-span-12">
           <Suspense fallback={null}>
-            <InvoiceTable />
+            <InvoiceTable data={invoiceData} totalOrders={totalOrders} currentPage={currentPage} />
           </Suspense>
         </div>
       </div>

@@ -1,3 +1,5 @@
+"use client";
+
 import { TrashIcon } from "@/assets/icons";
 import {
   Table,
@@ -9,11 +11,27 @@ import {
 } from "@/components/ui/table";
 import { cn } from "@/lib/utils";
 import dayjs from "dayjs";
-import { getInvoiceTableData } from "./fetch";
 import { DownloadIcon, PreviewIcon } from "./icons";
+import { useRouter, useSearchParams } from "next/navigation";
 
-export async function InvoiceTable() {
-  const data = await getInvoiceTableData();
+type InvoiceTableProps = {
+  data: Array<any>;
+  totalOrders: number;
+  currentPage: number;
+};
+
+export function InvoiceTable({ data, totalOrders, currentPage }: InvoiceTableProps) {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const itemsPerPage = 5;
+
+  const totalPages = Math.ceil(totalOrders / itemsPerPage);
+
+  const handlePageChange = (newPage: number) => {
+    const current = new URLSearchParams(Array.from(searchParams.entries()));
+    current.set("invoicePage", newPage.toString());
+    router.push(`?${current.toString()}`);
+  };
 
   return (
     <div className="rounded-[10px] border border-stroke bg-white p-4 shadow-1 dark:border-dark-3 dark:bg-gray-dark dark:shadow-card sm:p-7.5">
@@ -73,6 +91,23 @@ export async function InvoiceTable() {
           ))}
         </TableBody>
       </Table>
+
+      <div className="mt-4 flex justify-end gap-4">
+        <button
+          onClick={() => handlePageChange(currentPage - 1)}
+          disabled={currentPage === 1}
+          className="rounded-md bg-gray-200 px-4 py-2 text-dark disabled:opacity-50"
+        >
+          Previous
+        </button>
+        <button
+          onClick={() => handlePageChange(currentPage + 1)}
+          disabled={currentPage === totalPages}
+          className="rounded-md bg-gray-200 px-4 py-2 text-dark disabled:opacity-50"
+        >
+          Next
+        </button>
+      </div>
     </div>
   );
 }
