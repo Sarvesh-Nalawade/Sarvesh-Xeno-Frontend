@@ -98,7 +98,7 @@ export function InvoiceTable({ data, totalOrders, currentPage }: InvoiceTablePro
               </TableCell>
 
               <TableCell>
-                <p className="text-dark dark:text-white">${item.price}</p>
+                <p className="text-dark dark:text-white">₹ {item.price}</p>
               </TableCell>
             </TableRow>
           ))}

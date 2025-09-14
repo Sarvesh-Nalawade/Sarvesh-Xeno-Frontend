@@ -26,7 +26,7 @@ export async function OverviewCardsGroup() {
 
           ...profit,
 
-          value: "$" + compactFormat(profit.value),
+          value: "₹ " + compactFormat(profit.value),
 
         }}
 
