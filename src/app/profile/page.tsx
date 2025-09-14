@@ -3,19 +3,50 @@
 import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
 import Image from "next/image";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CameraIcon } from "./_components/icons";
-import { SocialAccounts } from "./_components/social-accounts";
+
+// Define the Owner type based on the backend model
+interface Owner {
+  owner: string;
+  name: string;
+}
 
 export default function Page() {
+  const [ownerData, setOwnerData] = useState<Owner[] | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
   const [data, setData] = useState({
-    name: "Danish Heilium",
     profilePhoto: "/images/user/user-03.png",
     coverPhoto: "/images/cover/cover-01.png",
   });
 
+  useEffect(() => {
+    const fetchOwnerDetails = async () => {
+      try {
+        const res = await fetch("http://localhost:8000/user/get-shop-details", {
+          credentials: "include", // Important to send the auth cookie
+        });
+
+        if (!res.ok) {
+          throw new Error(`Failed to fetch shop details: ${res.statusText}`);
+        }
+
+        const data = await res.json();
+        setOwnerData(data);
+      } catch (e: any) {
+        setError(e.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchOwnerDetails();
+  }, []);
+
   const handleChange = (e: any) => {
-    if (e.target.name === "profilePhoto" ) {
+    if (e.target.name === "profilePhoto") {
       const file = e.target?.files[0];
 
       setData({
@@ -28,11 +59,6 @@ export default function Page() {
       setData({
         ...data,
         coverPhoto: file && URL.createObjectURL(file),
-      });
-    } else {
-      setData({
-        ...data,
-        [e.target.name]: e.target.value,
       });
     }
   };
@@ -88,13 +114,19 @@ export default function Page() {
             </div>
           </div>
           <div className="mt-4">
-            <h3 className="mb-1 text-heading-6 font-bold text-dark dark:text-white">
-              {data?.name}
-            </h3>
-            <p className="font-medium">Ui/Ux Designer</p>
+            {loading && <p>Loading...</p>}
+            {error && <p className="text-red-500">Error: {error}</p>}
+            {ownerData && ownerData.length > 0 && (
+              <>
+                <h3 className="mb-1 text-heading-6 font-bold text-dark dark:text-white">
+                  {ownerData[0].owner}
+                </h3>
+                <p className="font-medium">{ownerData[0].name}</p>
+              </>
+            )}
 
             <div className="mx-auto max-w-[720px]">
-              <h4 className="font-medium text-dark dark:text-white">
+              <h4 className="mt-4 font-medium text-dark dark:text-white">
                 About Me
               </h4>
               <p className="mt-4">
