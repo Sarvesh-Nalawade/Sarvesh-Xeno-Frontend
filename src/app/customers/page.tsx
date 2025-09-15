@@ -26,7 +26,7 @@ const CustomerDashboardPage = () => {
   useEffect(() => {
     const fetchCustomers = async () => {
       try {
-        const res = await fetch("http://localhost:8000/user/get-customers", {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/user/get-customers`, {
           credentials: "include", // Important to send the auth cookie
         });
 

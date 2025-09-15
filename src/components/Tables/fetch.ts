@@ -64,7 +64,7 @@ export async function getTopProducts() {
 
 export async function getInvoiceTableData(page: number = 1, limit: number = 5) {
   // Fetch actual order data from backend
-  const res = await fetch("http://localhost:8000/user/get-orders", {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/user/get-orders`, {
     credentials: "include",
   });
 

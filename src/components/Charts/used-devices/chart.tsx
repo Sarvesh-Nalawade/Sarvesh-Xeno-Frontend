@@ -44,6 +44,21 @@ export function DonutChart({ data }: PropsType) {
 			formatter: (legendName, opts) => {
 				const { seriesPercent } = opts.w.globals;
 				return `${legendName}: ${Number(seriesPercent[opts.seriesIndex]).toFixed(2)}%`;
+				// // Try to parse legendName as a date
+				// let formattedName = legendName;
+				// const date = new Date(legendName);
+
+				// if (!isNaN(date.getTime())) {
+				// 	// Format as Indian date: DD/MM/YYYY
+				// 	formattedName = date.toLocaleDateString("en-IN", {
+				// 		day: "2-digit",
+				// 		month: "2-digit",
+				// 		year: "numeric",
+				// 	});
+				// }
+
+				// const { seriesPercent } = opts.w.globals;
+				// return `${formattedName}: ${Number(seriesPercent[opts.seriesIndex]).toFixed(2)}%`;
 			},
 		},
 		plotOptions: {
@@ -56,19 +71,22 @@ export function DonutChart({ data }: PropsType) {
 						total: {
 							show: true,
 							showAlways: true,
-							label: "Visitors",
+							// label: "Visitors",
 							fontSize: "16px",
 							fontWeight: "400",
 							formatter: (w) => {
 								const total = w.globals.seriesTotals.reduce((a, b) => a + b, 0);
-								return total.toFixed(2);
+								// return total.toFixed(2);
+								return Math.round(total).toLocaleString("en-IN"); // Indian numbering format
+
 							},
 						},
 						value: {
 							show: true,
 							fontSize: "28px",
 							fontWeight: "bold",
-							formatter: (val) => compactFormat(Number(Number(val).toFixed(2))),
+							// formatter: (val) => compactFormat(Number(Number(val).toFixed(2))),
+							formatter: (val) => Math.round(Number(val)).toLocaleString("en-IN"), // Indian format
 						},
 					},
 				},

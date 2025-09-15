@@ -73,7 +73,7 @@ export default function TotalRevenueLineGraph() {
   return (
     <div className="rounded-[10px] bg-white p-6 shadow-1 dark:bg-gray-dark dark:shadow-card mt-7">
       <h2 className="mb-4 text-body-2xlg font-bold text-dark dark:text-white">
-        Total Revenue (Last 5 Years)
+        Total Revenue (Last 3 Years)
       </h2>
       <Chart
         options={chartOptions}

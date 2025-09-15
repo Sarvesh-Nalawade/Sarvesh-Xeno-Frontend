@@ -22,7 +22,7 @@ const ProductDashboardPage = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await fetch("http://localhost:8000/user/get-products", {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/user/get-products`, {
           credentials: "include", // Important to send the auth cookie
         });
 

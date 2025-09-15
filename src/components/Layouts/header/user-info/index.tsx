@@ -26,7 +26,7 @@ export function UserInfo() {
   const handleLogout = async () => {
     setIsOpen(false);
     try {
-      const res = await fetch("http://localhost:8000/auth/logout", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/logout`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
       });

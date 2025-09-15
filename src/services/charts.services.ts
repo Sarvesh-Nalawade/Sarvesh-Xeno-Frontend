@@ -1,5 +1,5 @@
 export async function getTotalRevenueMonthlyData() {
-  const res = await fetch("http://localhost:8000/user/get-total-revenue", { credentials: "include" });
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/user/get-total-revenue`, { credentials: "include" });
   if (!res.ok) throw new Error("Failed to fetch total revenue data");
   const revenueEntries = await res.json(); // Array of { total_price, timestamp }
 
@@ -39,7 +39,7 @@ export async function getPaymentsOverviewData(timeFrame) {
 }
 
 export async function getWeeksProfitData(timeFrame) {
-  const res = await fetch("http://localhost:8000/user/get-weeks-data", {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/user/get-weeks-data`, {
     credentials: "include",
   });
   if (!res.ok) throw new Error("Failed to fetch weeks data");
@@ -51,7 +51,7 @@ export async function getWeeksProfitData(timeFrame) {
 
   // Find the start of 'this week' (6 days before the latest date)
   const endOfThisWeek = new Date(latestTimestamp);
-  endOfThisWeek.setHours(0,0,0,0);
+  endOfThisWeek.setHours(0, 0, 0, 0);
   const startOfThisWeek = new Date(endOfThisWeek);
   startOfThisWeek.setDate(endOfThisWeek.getDate() - 6);
 
@@ -108,7 +108,7 @@ export async function getTopCustomersByOrderData(timeFrame) {
 
 export async function getTopOrdersByRevenueData(timeFrame) {
   // Fetch all orders data from backend
-  const res = await fetch("http://localhost:8000/user/get-total-revenue", { credentials: "include" });
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/user/get-total-revenue`, { credentials: "include" });
   if (!res.ok) throw new Error("Failed to fetch total revenue data");
   const orders = await res.json(); // Array of { total_price, timestamp }
   // Sort by total_price descending, take top 5

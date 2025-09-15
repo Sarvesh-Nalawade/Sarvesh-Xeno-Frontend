@@ -3,8 +3,10 @@ import { EmailIcon } from "@/assets/icons";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import InputGroup from "../FormElements/InputGroup";
+import { useAuth } from "@/app/auth/auth-context";
 
 export default function SigninWithPassword() {
+  const { login } = useAuth();
   const [email, setEmail] = useState(
     process.env.NEXT_PUBLIC_DEMO_USER_MAIL || "",
   );
@@ -20,7 +22,7 @@ export default function SigninWithPassword() {
     }
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:8000/auth/send-email", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/send-email`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),
@@ -49,7 +51,7 @@ export default function SigninWithPassword() {
     }
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:8000/auth/login", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, otp: parseInt(otp, 10) }),
@@ -57,6 +59,7 @@ export default function SigninWithPassword() {
 
       if (res.ok) {
         alert("Login successful!");
+        login();
         router.push("/profile"); // Redirect to profile page on successful login
       } else {
         const errorData = await res.json();
@@ -71,7 +74,8 @@ export default function SigninWithPassword() {
   };
 
   return (
-    <form onSubmit={handleLogin}>
+      <form onSubmit={handleLogin}>
+  
       <InputGroup
         type="email"
         label="Email"
