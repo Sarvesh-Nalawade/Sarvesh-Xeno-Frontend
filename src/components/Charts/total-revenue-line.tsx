@@ -5,14 +5,22 @@ import { getTotalRevenueMonthlyData } from "@/services/charts.services";
 
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
+const MONTHS = [
+  "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+];
+
 export default function TotalRevenueLineGraph() {
-  const [data, setData] = useState<{ x: string; y: number }[]>([]);
+  const [series, setSeries] = useState([]);
+  const [years, setYears] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     getTotalRevenueMonthlyData()
-      .then(setData)
+      .then(res => {
+        setSeries(res.series);
+        setYears(res.years);
+      })
       .catch((e) => setError(e.message))
       .finally(() => setLoading(false));
   }, []);
@@ -29,19 +37,16 @@ export default function TotalRevenueLineGraph() {
     stroke: {
       curve: "smooth",
       width: 3,
-      colors: ["#5750F1"],
     },
     markers: {
       size: 5,
-      colors: ["#0ABEF9"],
-      strokeColors: "#5750F1",
       strokeWidth: 2,
       hover: {
         size: 8,
       },
     },
     xaxis: {
-      categories: data.map((d) => d.x),
+      categories: MONTHS,
       labels: { rotate: -45, style: { fontSize: "12px" } },
       title: { text: "Month", style: { fontWeight: 700 } },
     },
@@ -51,14 +56,15 @@ export default function TotalRevenueLineGraph() {
     },
     tooltip: {
       enabled: true,
+      shared: true,
       y: {
-        formatter: (val: number) => `$${val.toLocaleString()}`,
+        formatter: (val: number) => `$${val ? val.toLocaleString() : 0}`,
       },
     },
-    colors: ["#5750F1"],
+    colors: ["#5750F1", "#0ABEF9", "#8B5CF6", "#F59E42", "#EF4444"], // 5 distinct colors
     grid: { strokeDashArray: 6 },
     dataLabels: { enabled: false },
-    legend: { show: false },
+    legend: { show: true, position: 'top', horizontalAlign: 'right' },
   };
 
   return (
@@ -68,7 +74,7 @@ export default function TotalRevenueLineGraph() {
       </h2>
       <Chart
         options={chartOptions}
-        series={[{ name: "Total Revenue", data: data.map((d) => d.y) }]}
+        series={series}
         type="line"
         height={380}
       />

@@ -1,39 +1,32 @@
-// All fs, path, and data file references removed. Only browser/API compatible code remains.
-
-
 export async function getTotalRevenueMonthlyData() {
   const res = await fetch("http://localhost:8000/user/get-total-revenue", { credentials: "include" });
   if (!res.ok) throw new Error("Failed to fetch total revenue data");
   const revenueEntries = await res.json(); // Array of { total_price, timestamp }
 
-  // Group by month/year for last 5 years
-  const monthlyMap = new Map();
+  // Group by year and month
+  const yearlyMonthly = new Map(); // { year: { month: total } }
   for (const entry of revenueEntries) {
     const date = new Date(entry.timestamp);
-    const key = `${date.getFullYear()}-${date.getMonth()}`; // e.g. 2023-0 for Jan 2023
-    if (!monthlyMap.has(key)) monthlyMap.set(key, 0);
-    monthlyMap.set(key, monthlyMap.get(key) + entry.total_price);
+    const year = date.getFullYear();
+    const month = date.getMonth();
+    if (!yearlyMonthly.has(year)) yearlyMonthly.set(year, Array(12).fill(0));
+    yearlyMonthly.get(year)[month] += entry.total_price;
   }
-  // Sort by year/month descending
-  const sorted = Array.from(monthlyMap.entries()).sort((a, b) => {
-    const [aYear, aMonth] = a[0].split('-').map(Number);
-    const [bYear, bMonth] = b[0].split('-').map(Number);
-    if (aYear === bYear) return aMonth - bMonth;
-    return aYear - bYear;
-  });
-  // Get the last 60 months
-  const last60 = sorted.slice(-60);
-  // Format for chart: [{ x: 'Jan 2023', y: 1234 }]
-  const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-  const chartData = last60.map(([key, value]) => {
-    const [year, monthIdx] = key.split('-');
-    return {
-      x: `${monthNames[Number(monthIdx)]} ${year}`,
-      y: value,
-    };
-  });
-  return chartData;
+
+  // Get last 5 years, descending
+  const years = Array.from(yearlyMonthly.keys()).sort((a, b) => b - a).slice(0, 5);
+  years.sort((a, b) => a - b); // sort ascending for chart
+
+  // Format for ApexCharts multi-series: [{ name: '2024', data: [..12 months..] }, ...]
+  const series = years.map((year) => ({
+    name: year.toString(),
+    data: yearlyMonthly.get(year),
+  }));
+
+  return { series, years };
 }
+
+// ...rest of file unchanged...
 
 export async function getDevicesUsedData(timeFrame) {
   // TODO: Replace with backend fetch or remove if not needed
