@@ -25,8 +25,6 @@ export async function TopOrdersByRevenue({
         <h2 className="text-body-2xlg font-bold text-dark dark:text-white">
           Top 5 Orders by Revenue
         </h2>
-
-        <PeriodPicker defaultValue={timeFrame} sectionKey="top_orders_by_revenue" />
       </div>
 
       <div className="grid place-items-center">
