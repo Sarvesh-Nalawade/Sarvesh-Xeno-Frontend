@@ -5,7 +5,7 @@ import "jvectormap-next/jquery-jvectormap.css";
 import type { Metadata } from "next";
 import type { PropsWithChildren } from "react";
 import ClientLayout from "./ClientLayout";
-
+import { Analytics } from '@vercel/analytics/next';
 export const metadata: Metadata = {
   title: {
     template: "%s | Sarvesh Xeno Store",
@@ -20,6 +20,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
       <body>
         <ClientLayout>{children}</ClientLayout>
       </body>
+      <Analytics />
     </html>
   );
 }
