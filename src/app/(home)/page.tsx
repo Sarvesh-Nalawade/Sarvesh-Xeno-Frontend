@@ -13,14 +13,7 @@ import { OverviewCardsSkeleton } from "./_components/overview-cards/skeleton";
 import TotalRevenueLineGraph from "@/components/Charts/total-revenue-line";
 import { RegionLabels } from "./_components/region-labels";
 
-type PropsType = {
-  searchParams: {
-    selected_time_frame?: string;
-    invoicePage?: string;
-  };
-};
-
-export default async function Home({ searchParams }: PropsType) {
+export default async function Home({ searchParams }: { searchParams?: { selected_time_frame?: string; invoicePage?: string; } }) {
   const { selected_time_frame, invoicePage } = searchParams;
   const extractTimeFrame = createTimeFrameExtractor(selected_time_frame);
 

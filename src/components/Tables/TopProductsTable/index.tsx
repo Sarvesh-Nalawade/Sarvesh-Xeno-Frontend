@@ -58,7 +58,7 @@ export function TopProductsTable({ data, className }: { data: Product[], classNa
 
               <TableCell>{product.inv_item_qty}</TableCell>
 
-              <TableCell>{product.weight || "N/A"}</TableCell>
+              <TableCell>{typeof product.weight === 'number' ? product.weight.toFixed(2) : "N/A"}</TableCell>
             </TableRow>
           ))}
         </TableBody>

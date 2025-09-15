@@ -14,6 +14,20 @@ const Chart = dynamic(() => import("react-apexcharts"), {
 
 export function DonutChart({ data }: PropsType) {
   const chartOptions: ApexOptions = {
+    tooltip: {
+      y: {
+        formatter: function(value, opts) {
+                  // Defensive check to avoid undefined errors
+                  const seriesTotals = opts && opts.w && opts.w.globals && opts.w.globals.seriesTotals;
+                  if (!seriesTotals) {
+                    return `${Number(value).toFixed(2)}`;
+                  }
+                  const total = seriesTotals.reduce((a, b) => a + b, 0);
+          const percent = total ? ((value / total) * 100).toFixed(2) : '0.00';
+          return `${Number(value).toFixed(2)} (${percent}%)`;
+        }
+      }
+    },
     chart: {
       type: "donut",
       fontFamily: "inherit",
@@ -29,7 +43,7 @@ export function DonutChart({ data }: PropsType) {
       },
       formatter: (legendName, opts) => {
         const { seriesPercent } = opts.w.globals;
-        return `${legendName}: ${seriesPercent[opts.seriesIndex]}%`;
+        return `${legendName}: ${Number(seriesPercent[opts.seriesIndex]).toFixed(2)}%`;
       },
     },
     plotOptions: {
@@ -50,7 +64,7 @@ export function DonutChart({ data }: PropsType) {
               show: true,
               fontSize: "28px",
               fontWeight: "bold",
-              formatter: (val) => compactFormat(+val),
+              formatter: (val) => compactFormat(Number(Number(val).toFixed(2))),
             },
           },
         },

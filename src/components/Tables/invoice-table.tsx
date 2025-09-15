@@ -126,7 +126,7 @@ export function InvoiceTable({ data, className }: InvoiceTableProps) {
               </TableCell>
 
               <TableCell>
-                <p className="text-dark dark:text-white">₹ {item.price}</p>
+                <p className="text-dark dark:text-white">₹ {typeof item.price === 'number' ? item.price.toFixed(2) : item.price}</p>
               </TableCell>
             </TableRow>
           ))}

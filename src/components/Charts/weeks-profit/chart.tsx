@@ -16,6 +16,11 @@ const Chart = dynamic(() => import("react-apexcharts"), {
 
 export function WeeksProfitChart({ data }: PropsType) {
   const options: ApexOptions = {
+    yaxis: {
+      labels: {
+        formatter: (val: number) => val.toFixed(2),
+      },
+    },
     colors: ["#5750F1", "#0ABEF9"],
     chart: {
       type: "bar",

@@ -51,7 +51,10 @@ export default function TotalRevenueLineGraph() {
       title: { text: "Month", style: { fontWeight: 700 } },
     },
     yaxis: {
-      labels: { style: { fontSize: "12px" } },
+          labels: {
+            style: { fontSize: "12px" },
+            formatter: (val: number) => val.toFixed(2),
+          },
       title: { text: "Total Revenue", style: { fontWeight: 700 } },
     },
     tooltip: {
