@@ -10,6 +10,7 @@ import { getInvoiceTableData } from "@/components/Tables/fetch";
 // import { ChatsCard } from "./_components/chats-card";
 import { OverviewCardsGroup } from "./_components/overview-cards";
 import { OverviewCardsSkeleton } from "./_components/overview-cards/skeleton";
+import TotalRevenueLineGraph from "@/components/Charts/total-revenue-line";
 import { RegionLabels } from "./_components/region-labels";
 
 type PropsType = {
@@ -63,10 +64,14 @@ export default async function Home({ searchParams }: PropsType) {
         </div> */}
 
         <div className="col-span-12">
-          <Suspense fallback={null}>
-            <InvoiceTable data={invoiceData} totalOrders={totalOrders} currentPage={currentPage} />
-          </Suspense>
-        </div>
+                <TotalRevenueLineGraph />
+              </div>
+        
+              <div className="col-span-12">
+                <Suspense fallback={null}>
+                  <InvoiceTable data={invoiceData} totalOrders={totalOrders} currentPage={currentPage} />
+                </Suspense>
+              </div>
       </div>
     </>
   );

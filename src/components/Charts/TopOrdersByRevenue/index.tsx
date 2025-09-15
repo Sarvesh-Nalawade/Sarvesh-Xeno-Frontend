@@ -30,7 +30,7 @@ export async function TopOrdersByRevenue({
       </div>
 
       <div className="grid place-items-center">
-        <DonutChart data={data} />
+        <DonutChart data={data.labels.map((name, i) => ({ name, amount: data.values[i] }))} />
       </div>
     </div>
   );

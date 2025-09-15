@@ -12,30 +12,58 @@ import {
 import { cn } from "@/lib/utils";
 import dayjs from "dayjs";
 import { DownloadIcon, PreviewIcon } from "./icons";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useState } from "react";
 
 type InvoiceTableProps = {
   data: Array<any>;
-  totalOrders: number;
-  currentPage: number;
+  className?: string;
 };
 
-export function InvoiceTable({ data, totalOrders, currentPage }: InvoiceTableProps) {
-  const router = useRouter();
-  const searchParams = useSearchParams();
+type SortDirection = 'asc' | 'desc';
+
+export function InvoiceTable({ data, className }: InvoiceTableProps) {
+  const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
+  const [isSortedByTimestamp, setIsSortedByTimestamp] = useState(false);
+  const [sortDirection, setSortDirection] = useState<SortDirection>('asc');
 
-  const totalPages = Math.ceil(totalOrders / itemsPerPage);
+  // Sorting logic
+  let displayedData = [...(data || [])];
+  if (isSortedByTimestamp) {
+    displayedData.sort((a, b) => {
+      const dateA = new Date(a.date).getTime();
+      const dateB = new Date(b.date).getTime();
+      return sortDirection === 'asc' ? dateA - dateB : dateB - dateA;
+    });
+  }
 
-  const handlePageChange = (newPage: number) => {
-    const current = new URLSearchParams(Array.from(searchParams.entries()));
-    current.set("invoicePage", newPage.toString());
-    router.push(`?${current.toString()}`);
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = displayedData.slice(indexOfFirstItem, indexOfLastItem);
+
+  const totalPages = Math.ceil(displayedData.length / itemsPerPage);
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const handlePreviousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
   };
 
   const handleSortByTimestamp = () => {
-    console.log("Sort by Timestamp button clicked!");
-    // Future integration with backend sorting logic will go here
+    if (!isSortedByTimestamp) {
+      setIsSortedByTimestamp(true);
+      setSortDirection('asc');
+    } else if (sortDirection === 'asc') {
+      setSortDirection('desc');
+    } else {
+      setIsSortedByTimestamp(false);
+    }
   };
 
   return (
@@ -46,9 +74,9 @@ export function InvoiceTable({ data, totalOrders, currentPage }: InvoiceTablePro
         </h2>
         <button
           onClick={handleSortByTimestamp}
-          className="px-4 py-2 text-sm font-medium text-dark dark:text-white disabled:opacity-50 border rounded-md"
+          className={`px-4 py-2 text-sm font-medium border rounded-md disabled:opacity-50 transition-all duration-200 ${isSortedByTimestamp ? 'bg-pink-600 text-white border-4 border-yellow-400 font-extrabold shadow-lg scale-110' : 'text-dark dark:text-white'}`}
         >
-          Sort by Timestamp
+          Sort by Timestamp{isSortedByTimestamp ? (sortDirection === 'asc' ? ' ↑' : ' ↓') : ''}
         </button>
       </div>
       <Table>
@@ -63,7 +91,7 @@ export function InvoiceTable({ data, totalOrders, currentPage }: InvoiceTablePro
         </TableHeader>
 
         <TableBody>
-          {data.map((item: { name: string; price: number; date: string; status: string; quantity: number; discount: number }, index: number) => (
+          {currentItems.map((item: { name: string; price: number; date: string; status: string; quantity: number; discount: number }, index: number) => (
             <TableRow key={index} className="border-[#eee] dark:border-3">
               <TableCell className="min-w-[155px] xl:pl-7.5">
                 <h5 className="text-dark dark:text-white">{item.name}</h5>
@@ -107,7 +135,7 @@ export function InvoiceTable({ data, totalOrders, currentPage }: InvoiceTablePro
 
       <div className="mt-4 flex justify-end">
         <button
-          onClick={() => handlePageChange(currentPage - 1)}
+          onClick={handlePreviousPage}
           disabled={currentPage === 1}
           className="px-4 py-2 text-sm font-medium text-dark dark:text-white disabled:opacity-50"
         >
@@ -117,7 +145,7 @@ export function InvoiceTable({ data, totalOrders, currentPage }: InvoiceTablePro
           {currentPage} / {totalPages}
         </span>
         <button
-          onClick={() => handlePageChange(currentPage + 1)}
+          onClick={handleNextPage}
           disabled={currentPage === totalPages}
           className="px-4 py-2 text-sm font-medium text-dark dark:text-white disabled:opacity-50"
         >

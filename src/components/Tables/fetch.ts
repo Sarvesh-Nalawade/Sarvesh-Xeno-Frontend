@@ -63,35 +63,31 @@ export async function getTopProducts() {
 }
 
 export async function getInvoiceTableData(page: number = 1, limit: number = 5) {
-  // Fake delay
-  await new Promise((resolve) => setTimeout(resolve, 1400));
-
-  const dataPath = path.join(process.cwd(), "data", "orders.json");
-  const data = await fs.readFile(dataPath, "utf-8");
-  const orders = JSON.parse(data);
-
-  const lineItemsPath = path.join(process.cwd(), "data", "line_items.json");
-  const lineItemsData = await fs.readFile(lineItemsPath, "utf-8");
-  const lineItems = JSON.parse(lineItemsData);
-
-  const startIndex = (page - 1) * limit;
-  const endIndex = startIndex + limit;
-
-  const paginatedOrders = orders.slice(startIndex, endIndex).map((order: any) => {
-    const items = lineItems.filter((li: any) => li.order_id === order.id);
-    return {
-      name: `Order #${order.order_number}`,
-      price: order.total_price,
-      date: order.timestamp,
-      status: order.financial_status,
-      quantity: items.reduce((acc: number, item: any) => acc + item.quantity, 0),
-      discount: order.total_discount,
-    };
+  // Fetch actual order data from backend
+  const res = await fetch("http://localhost:8000/user/get-orders", {
+    credentials: "include",
   });
 
+  if (!res.ok) {
+    throw new Error(`Failed to fetch orders: ${res.statusText}`);
+  }
+
+  const orders = await res.json();
+
+  // Map backend fields to InvoiceTable expected fields
+  const mappedOrders = orders.map((order: any) => ({
+    name: `Order #${order.order_number}`,
+    price: order.total_price,
+    date: new Date(order.timestamp).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "2-digit" }),
+    status: order.fulfillment_stat,
+    quantity: order.confirmed,
+    discount: 0, // Update if discount info is present in backend
+  }));
+
+  // Return all mapped orders for client-side pagination in the table
   return {
-    data: paginatedOrders,
-    totalOrders: orders.length,
+    data: mappedOrders,
+    totalOrders: mappedOrders.length,
   };
 }
 
